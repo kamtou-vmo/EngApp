@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinguaPrep - Advanced English Exam Preparation</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4F46E5',secondary:'#10B981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .custom-checkbox {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .checkmark {
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #4F46E5;
+            border-color: #4F46E5;
+        }
+        .checkmark:after {
+            content: "";
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e2e8f0;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #4F46E5;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .custom-range {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: #e2e8f0;
+            outline: none;
+        }
+        .custom-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4F46E5;
+            cursor: pointer;
+        }
+        .custom-range::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4F46E5;
+            cursor: pointer;
+        }
+        .tab-switcher {
+            display: inline-flex;
+            background-color: #f3f4f6;
+            border-radius: 9999px;
+            padding: 4px;
+        }
+        .tab-button {
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .tab-button.active {
+            background-color: white;
+            color: #4F46E5;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-['Pacifico'] text-primary mr-10">English</a>
+                <nav class="hidden md:flex space-x-8">
+                    <div class="relative group">
+                        <button class="flex items-center text-gray-700 hover:text-primary font-medium transition-colors">
+                            TOEIC
+                            <div class="w-5 h-5 ml-1 flex items-center justify-center">
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-2 hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Listening & Reading</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Speaking & Writing</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Practice Tests</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Vocabulary Builder</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <button class="flex items-center text-gray-700 hover:text-primary font-medium transition-colors">
+                            IELTS
+                            <div class="w-5 h-5 ml-1 flex items-center justify-center">
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-2 hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Academic</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">General Training</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Writing Tasks</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Speaking Practice</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <button class="flex items-center text-gray-700 hover:text-primary font-medium transition-colors">
+                            SAT
+                            <div class="w-5 h-5 ml-1 flex items-center justify-center">
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-2 hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Reading & Writing</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Math</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Practice Tests</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Essay Writing</a>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors">Resources</a>
+                    <a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors">Community</a>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="relative hidden md:block">
+                    <input type="text" placeholder="Search courses, materials..." class="w-64 pl-10 pr-4 py-2 rounded-full text-sm border border-gray-200 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+                    <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+                        <i class="ri-search-line"></i>
+                    </div>
+                </div>
+                <div class="relative">
+                    <button class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors relative">
+                        <i class="ri-notification-3-line"></i>
+                        <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-medium">JS</div>
+                    <span class="hidden md:inline text-sm font-medium">John Smith</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background Image -->
+    <section class="relative py-20 overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=A%20modern%20educational%20environment%20with%20soft%20lighting%2C%20showing%20a%20clean%20desk%20with%20a%20laptop%2C%20books%2C%20and%20study%20materials.%20The%20scene%20should%20have%20a%20gradient%20from%20light%20blue%20to%20white%20on%20the%20left%20side%2C%20transitioning%20to%20a%20clear%20image%20on%20the%20right.%20The%20image%20should%20convey%20a%20sense%20of%20focus%2C%20learning%2C%20and%20technology%20with%20a%20minimalist%20aesthetic.%20The%20left%20side%20must%20have%20ample%20empty%20space%20for%20text%20overlay.&width=1920&height=600&seq=hero1&orientation=landscape'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-r from-white/90 to-white/30"></div>
+        <div class="container mx-auto px-4 relative">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Master English Exams with Personalized Learning</h1>
+                <p class="text-lg text-gray-700 mb-8">Prepare for TOEIC, IELTS, and SAT with adaptive learning paths, interactive practice, and AI-powered feedback. Join thousands of successful test-takers worldwide.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="px-6 py-3 bg-primary text-white font-medium rounded-button shadow-lg hover:bg-primary/90 transition-colors whitespace-nowrap">Start Free Trial</button>
+                    <button class="px-6 py-3 bg-white text-primary font-medium rounded-button shadow border border-primary hover:bg-gray-50 transition-colors whitespace-nowrap">Explore Courses</button>
+                </div>
+                <div class="mt-8 flex items-center">
+                    <div class="flex -space-x-2">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20Asian%20woman%20with%20a%20friendly%20smile%2C%20simple%20background&width=40&height=40&seq=user1&orientation=squarish" class="w-10 h-10 rounded-full border-2 border-white object-top object-cover" alt="User">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20African%20man%20with%20glasses%2C%20simple%20background&width=40&height=40&seq=user2&orientation=squarish" class="w-10 h-10 rounded-full border-2 border-white object-top object-cover" alt="User">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20Caucasian%20woman%20with%20short%20hair%2C%20simple%20background&width=40&height=40&seq=user3&orientation=squarish" class="w-10 h-10 rounded-full border-2 border-white object-top object-cover" alt="User">
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-600"><span class="font-medium">2,500+ students</span> achieved their target scores last month</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exam Type Quick Access -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Choose Your Exam Preparation</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Select your target exam and get instant access to customized study plans, practice materials, and expert guidance.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-6 border border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 flex items-center justify-center text-blue-600">
+                            <i class="ri-file-list-3-line ri-xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">TOEIC Preparation</h3>
+                    <p class="text-gray-600 mb-6">Boost your professional English skills and achieve your target score with our comprehensive TOEIC preparation program.</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-sm font-medium text-gray-500">4 modules</span>
+                            <div class="w-full h-1.5 bg-gray-100 rounded-full mt-2">
+                                <div class="h-full bg-blue-500 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <button class="px-4 py-2 bg-blue-500 text-white font-medium rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Start Learning</button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-6 border border-gray-100">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 flex items-center justify-center text-green-600">
+                            <i class="ri-global-line ri-xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">IELTS Preparation</h3>
+                    <p class="text-gray-600 mb-6">Develop the skills needed to succeed in all four IELTS test components with our proven methodology and practice materials.</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-sm font-medium text-gray-500">6 modules</span>
+                            <div class="w-full h-1.5 bg-gray-100 rounded-full mt-2">
+                                <div class="h-full bg-green-500 rounded-full" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <button class="px-4 py-2 bg-green-500 text-white font-medium rounded-button hover:bg-green-600 transition-colors whitespace-nowrap">Start Learning</button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-6 border border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 flex items-center justify-center text-purple-600">
+                            <i class="ri-book-open-line ri-xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">SAT Preparation</h3>
+                    <p class="text-gray-600 mb-6">Master the SAT with our comprehensive preparation program covering reading, writing, and math sections with strategic approaches.</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-sm font-medium text-gray-500">5 modules</span>
+                            <div class="w-full h-1.5 bg-gray-100 rounded-full mt-2">
+                                <div class="h-full bg-purple-500 rounded-full" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <button class="px-4 py-2 bg-purple-500 text-white font-medium rounded-button hover:bg-purple-600 transition-colors whitespace-nowrap">Start Learning</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Continue Learning Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-900">Continue Learning</h2>
+                <a href="#" class="text-primary font-medium flex items-center">
+                    View all courses
+                    <div class="w-5 h-5 ml-1 flex items-center justify-center">
+                        <i class="ri-arrow-right-line"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=a%20professional%20classroom%20setting%20with%20a%20teacher%20explaining%20TOEIC%20listening%20strategies%20to%20students%2C%20with%20headphones%20and%20study%20materials%20visible%20on%20desks%2C%20bright%20and%20modern%20educational%20environment&width=400&height=200&seq=course1&orientation=landscape" class="w-full h-48 object-cover object-top" alt="TOEIC Listening">
+                        <div class="absolute top-3 right-3 bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded">TOEIC</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">TOEIC Listening Strategies</h3>
+                        <p class="text-gray-600 text-sm mb-4">Master techniques to improve your listening comprehension and accuracy in the TOEIC exam.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-sm text-gray-500">12 lessons remaining</span>
+                            <span class="text-sm font-medium text-primary">68% complete</span>
+                        </div>
+                        <div class="w-full h-1.5 bg-gray-100 rounded-full mb-4">
+                            <div class="h-full bg-primary rounded-full" style="width: 68%"></div>
+                        </div>
+                        <button class="w-full py-2.5 bg-primary text-white font-medium rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Continue Learning</button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=a%20student%20practicing%20IELTS%20writing%20at%20a%20desk%20with%20reference%20materials%2C%20notes%2C%20and%20a%20laptop%20showing%20writing%20templates%2C%20in%20a%20bright%20study%20space&width=400&height=200&seq=course2&orientation=landscape" class="w-full h-48 object-cover object-top" alt="IELTS Writing">
+                        <div class="absolute top-3 right-3 bg-green-500 text-white text-xs font-medium px-2 py-1 rounded">IELTS</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">IELTS Writing Task 2 Mastery</h3>
+                        <p class="text-gray-600 text-sm mb-4">Learn how to structure and develop compelling essays that meet the IELTS examiner's expectations.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-sm text-gray-500">8 lessons remaining</span>
+                            <span class="text-sm font-medium text-green-600">42% complete</span>
+                        </div>
+                        <div class="w-full h-1.5 bg-gray-100 rounded-full mb-4">
+                            <div class="h-full bg-green-500 rounded-full" style="width: 42%"></div>
+                        </div>
+                        <button class="w-full py-2.5 bg-green-500 text-white font-medium rounded-button hover:bg-green-600 transition-colors whitespace-nowrap">Continue Learning</button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=students%20working%20on%20SAT%20math%20problems%20in%20a%20modern%20classroom%20with%20calculators%20and%20practice%20materials%2C%20focused%20on%20problem-solving%20with%20a%20teacher%20providing%20guidance&width=400&height=200&seq=course3&orientation=landscape" class="w-full h-48 object-cover object-top" alt="SAT Math">
+                        <div class="absolute top-3 right-3 bg-purple-500 text-white text-xs font-medium px-2 py-1 rounded">SAT</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">SAT Math Problem-Solving</h3>
+                        <p class="text-gray-600 text-sm mb-4">Develop strategic approaches to solve complex math problems quickly and accurately on the SAT.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-sm text-gray-500">15 lessons remaining</span>
+                            <span class="text-sm font-medium text-purple-600">25% complete</span>
+                        </div>
+                        <div class="w-full h-1.5 bg-gray-100 rounded-full mb-4">
+                            <div class="h-full bg-purple-500 rounded-full" style="width: 25%"></div>
+                        </div>
+                        <button class="w-full py-2.5 bg-purple-500 text-white font-medium rounded-button hover:bg-purple-600 transition-colors whitespace-nowrap">Continue Learning</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Dashboard -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-900">Your Learning Dashboard</h2>
+                <div class="tab-switcher">
+                    <button class="tab-button active" data-tab="weekly">Weekly</button>
+                    <button class="tab-button" data-tab="monthly">Monthly</button>
+                    <button class="tab-button" data-tab="all-time">All Time</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Progress Overview -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Progress Overview</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm font-medium text-gray-700">TOEIC Preparation</span>
+                                <span class="text-sm font-medium text-blue-600">68%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full">
+                                <div class="h-full bg-blue-500 rounded-full" style="width: 68%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm font-medium text-gray-700">IELTS Preparation</span>
+                                <span class="text-sm font-medium text-green-600">42%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full">
+                                <div class="h-full bg-green-500 rounded-full" style="width: 42%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm font-medium text-gray-700">SAT Preparation</span>
+                                <span class="text-sm font-medium text-purple-600">25%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full">
+                                <div class="h-full bg-purple-500 rounded-full" style="width: 25%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-sm font-medium text-gray-700 mb-3">Study Time This Week</h4>
+                        <div id="studyTimeChart" class="w-full h-60"></div>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-100">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-500">Daily Goal</p>
+                                <p class="text-xl font-bold text-gray-900">45 minutes</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Current Streak</p>
+                                <p class="text-xl font-bold text-primary">6 days</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skill Breakdown -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Skill Breakdown</h3>
+                    <div id="skillChart" class="w-full h-64"></div>
+                    
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-700 mb-3">Recommended Focus Areas</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600 mt-0.5">
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-error-warning-line"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">TOEIC Listening Part 3</p>
+                                    <p class="text-xs text-gray-600">Conversations with multiple speakers need improvement</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mt-0.5">
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-alert-line"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">IELTS Writing Task 2</p>
+                                    <p class="text-xs text-gray-600">Essay structure and coherence need practice</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-100">
+                        <button class="w-full py-2.5 bg-primary text-white font-medium rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">View Detailed Analysis</button>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Tests & Deadlines -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Upcoming Tests & Deadlines</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start p-3 bg-blue-50 rounded-lg">
+                            <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+                                <div class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-calendar-event-line"></i>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">TOEIC Practice Test</p>
+                                <p class="text-xs text-gray-600">June 15, 2025 • 10:00 AM</p>
+                                <div class="mt-2">
+                                    <span class="inline-block px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded">3 days left</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start p-3 bg-green-50 rounded-lg">
+                            <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600">
+                                <div class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-file-text-line"></i>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">IELTS Writing Assignment</p>
+                                <p class="text-xs text-gray-600">June 18, 2025 • 11:59 PM</p>
+                                <div class="mt-2">
+                                    <span class="inline-block px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded">6 days left</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start p-3 bg-purple-50 rounded-lg">
+                            <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600">
+                                <div class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-test-tube-line"></i>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">SAT Full Mock Test</p>
+                                <p class="text-xs text-gray-600">June 25, 2025 • 9:00 AM</p>
+                                <div class="mt-2">
+                                    <span class="inline-block px-2 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded">15 days left</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-100">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-500">Target TOEIC Score</p>
+                                <p class="text-xl font-bold text-gray-900">850+</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Test Date</p>
+                                <p class="text-xl font-bold text-gray-900">July 15</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Learning Modules -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Interactive Learning Modules</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Engage with our diverse learning resources designed to help you master every aspect of your target exam.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Video Tutorials -->
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20video%20tutorial%20setting%20with%20an%20instructor%20explaining%20English%20grammar%20concepts%2C%20with%20a%20whiteboard%20or%20digital%20screen%20visible%2C%20in%20a%20well-lit%20educational%20environment&width=300&height=180&seq=video1&orientation=landscape" class="w-full h-40 object-cover object-top" alt="Video Tutorial">
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                            <div class="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
+                                <div class="w-6 h-6 flex items-center justify-center text-primary ml-1">
+                                    <i class="ri-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">12:45</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-base font-bold text-gray-900 mb-1">TOEIC Listening Strategies</h3>
+                        <p class="text-xs text-gray-500 mb-3">Part 3: Conversations with Multiple Speakers</p>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                                <i class="ri-eye-line"></i>
+                            </div>
+                            <span class="ml-1">1,245 views</span>
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-400 ml-4">
+                                <i class="ri-thumb-up-line"></i>
+                            </div>
+                            <span class="ml-1">98%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Practice Tests -->
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                    <div class="p-5">
+                        <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
+                            <div class="w-6 h-6 flex items-center justify-center text-blue-600">
+                                <i class="ri-file-list-3-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-base font-bold text-gray-900 mb-1">TOEIC Practice Test</h3>
+                        <p class="text-xs text-gray-500 mb-3">Full-length test with all sections</p>
+                        
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                                    <i class="ri-star-half-fill"></i>
+                                </div>
+                                <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                    <i class="ri-star-line"></i>
+                                </div>
+                            </div>
+                            <span class="ml-2 text-xs text-gray-500">Intermediate</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-600">200 questions</span>
+                            <span class="text-gray-600">120 minutes</span>
+                        </div>
+                        
+                        <button class="w-full py-2 mt-4 bg-blue-500 text-white font-medium rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Start Test</button>
+                    </div>
+                </div>
+                
+                <!-- Vocabulary Flashcards -->
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                    <div class="p-5">
+                        <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center mb-4">
+                            <div class="w-6 h-6 flex items-center justify-center text-green-600">
+                                <i class="ri-file-paper-2-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-base font-bold text-gray-900 mb-1">IELTS Vocabulary</h3>
+                        <p class="text-xs text-gray-500 mb-3">Academic Writing Task 2 Keywords</p>
+                        
+                        <div class="bg-gray-50 rounded-lg p-3 mb-4">
+                            <p class="text-sm font-medium text-gray-700 mb-1">Mitigate</p>
+                            <p class="text-xs text-gray-600">To make less severe or reduce the negative effects of something</p>
+                        </div>
+                        
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-600">Card 24 of 50</span>
+                            <div class="flex space-x-2">
+                                <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors">
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-arrow-left-s-line"></i>
+                                    </div>
+                                </button>
+                                <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors">
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-arrow-right-s-line"></i>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Speaking Practice -->
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                    <div class="p-5">
+                        <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center mb-4">
+                            <div class="w-6 h-6 flex items-center justify-center text-purple-600">
+                                <i class="ri-mic-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-base font-bold text-gray-900 mb-1">Speaking Practice</h3>
+                        <p class="text-xs text-gray-500 mb-3">IELTS Speaking Part 2: Long Turn</p>
+                        
+                        <div class="bg-gray-50 rounded-lg p-3 mb-4">
+                            <p class="text-sm font-medium text-gray-700 mb-1">Topic: Describe a skill you want to learn</p>
+                            <p class="text-xs text-gray-600">2 minutes to speak after 1 minute preparation</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-record-circle-line"></i>
+                                    </div>
+                                </div>
+                                <span class="ml-2 text-sm text-gray-600">Record Answer</span>
+                            </div>
+                            <span class="text-sm text-gray-600">AI Feedback</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 text-center">
+                <button class="px-6 py-3 bg-white text-primary font-medium rounded-button shadow border border-primary hover:bg-gray-50 transition-colors whitespace-nowrap">Explore All Learning Resources</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gamification Elements -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Track Your Progress & Earn Rewards</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Stay motivated with our gamified learning experience. Complete challenges, earn points, and unlock achievements as you progress.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Daily Streak & XP -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-1">Daily Streak</h3>
+                            <p class="text-sm text-gray-600">Keep your momentum going!</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-500">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-fire-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 flex items-center justify-between">
+                        <div class="text-center">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mx-auto">
+                                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">Wed</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mx-auto">
+                                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">Thu</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mx-auto">
+                                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">Fri</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mx-auto">
+                                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">Sat</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mx-auto">
+                                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">Sun</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center mx-auto">
+                                <div class="w-5 h-5 flex items-center justify-center text-white">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">Mon</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center mx-auto border-2 border-dashed border-orange-300">
+                                <span class="text-orange-500 font-medium">?</span>
+                            </div>
+                            <p class="text-xs mt-1 font-medium text-orange-500">Today</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-sm font-medium text-gray-700 mb-3">Experience Points (XP)</h4>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs text-gray-500">Level 5</span>
+                            <span class="text-xs text-gray-500">1,250 / 1,500 XP</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-100 rounded-full">
+                            <div class="h-full bg-primary rounded-full" style="width: 83%"></div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">250 XP until next level</p>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-100">
+                        <button class="w-full py-2.5 bg-primary text-white font-medium rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Complete Today's Challenge</button>
+                    </div>
+                </div>
+                
+                <!-- Achievements -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-1">Achievements</h3>
+                            <p class="text-sm text-gray-600">You've unlocked 8 of 24 badges</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-500">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-medal-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 grid grid-cols-4 gap-4">
+                        <div class="text-center">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto">
+                                <div class="w-6 h-6 flex items-center justify-center text-blue-500">
+                                    <i class="ri-book-open-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">First Lesson</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto">
+                                <div class="w-6 h-6 flex items-center justify-center text-green-500">
+                                    <i class="ri-test-tube-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">Perfect Score</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto">
+                                <div class="w-6 h-6 flex items-center justify-center text-purple-500">
+                                    <i class="ri-time-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">5-Day Streak</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center mx-auto">
+                                <div class="w-6 h-6 flex items-center justify-center text-orange-500">
+                                    <i class="ri-flashlight-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">Quick Thinker</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mx-auto">
+                                <div class="w-6 h-6 flex items-center justify-center text-red-500">
+                                    <i class="ri-mic-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">Speaker</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mx-auto">
+                                <div class="w-6 h-6 flex items-center justify-center text-indigo-500">
+                                    <i class="ri-pen-nib-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">Writer</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center mx-auto">
+                                <div class="w-6 h-6 flex items-center justify-center text-teal-500">
+                                    <i class="ri-headphone-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">Listener</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mx-auto">
+                                <div class="w-6 h-6 flex items-center justify-center text-pink-500">
+                                    <i class="ri-eye-line"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-1 text-gray-600">Reader</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-sm font-medium text-gray-700 mb-3">Next Achievement</h4>
+                        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                            <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-500">
+                                <div class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-trophy-line"></i>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">Vocabulary Master</p>
+                                <p class="text-xs text-gray-600">Learn 500 new words (423/500)</p>
+                                <div class="w-full h-1.5 bg-gray-200 rounded-full mt-1">
+                                    <div class="h-full bg-yellow-500 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Leaderboard -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-1">Leaderboard</h3>
+                            <p class="text-sm text-gray-600">You're in the top 15%</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-bar-chart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 space-y-3">
+                        <div class="flex items-center p-3 bg-primary/5 rounded-lg">
+                            <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-500 font-bold text-sm">1</div>
+                            <div class="ml-3 flex-1">
+                                <div class="flex items-center">
+                                    <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20Asian%20woman%20with%20a%20friendly%20smile%2C%20simple%20background&width=32&height=32&seq=leader1&orientation=squarish" class="w-8 h-8 rounded-full object-top object-cover" alt="User">
+                                    <p class="ml-2 text-sm font-medium text-gray-900">Emily Chen</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-primary">2,845 XP</p>
+                                <p class="text-xs text-gray-500">Level 8</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm">2</div>
+                            <div class="ml-3 flex-1">
+                                <div class="flex items-center">
+                                    <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20African%20man%20with%20glasses%2C%20simple%20background&width=32&height=32&seq=leader2&orientation=squarish" class="w-8 h-8 rounded-full object-top object-cover" alt="User">
+                                    <p class="ml-2 text-sm font-medium text-gray-900">Michael Okonkwo</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-gray-900">2,712 XP</p>
+                                <p class="text-xs text-gray-500">Level 7</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                            <div class="w-8 h-8 rounded-full bg-orange-200 flex items-center justify-center text-orange-600 font-bold text-sm">3</div>
+                            <div class="ml-3 flex-1">
+                                <div class="flex items-center">
+                                    <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20Caucasian%20woman%20with%20short%20hair%2C%20simple%20background&width=32&height=32&seq=leader3&orientation=squarish" class="w-8 h-8 rounded-full object-top object-cover" alt="User">
+                                    <p class="ml-2 text-sm font-medium text-gray-900">Sarah Miller</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-gray-900">2,589 XP</p>
+                                <p class="text-xs text-gray-500">Level 7</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t border-gray-100 my-2"></div>
+                        
+                        <div class="flex items-center p-3 bg-blue-50 rounded-lg">
+                            <div class="w-8 h-8 rounded-full bg-blue-200 flex items-center justify-center text-blue-600 font-bold text-sm">7</div>
+                            <div class="ml-3 flex-1">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-medium">JS</div>
+                                    <p class="ml-2 text-sm font-medium text-gray-900">John Smith</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-gray-900">1,842 XP</p>
+                                <p class="text-xs text-gray-500">Level 5</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-100">
+                        <button class="w-full py-2.5 bg-blue-500 text-white font-medium rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">View Full Leaderboard</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Study Tools Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Study Tools & Resources</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Enhance your learning experience with our suite of powerful study tools designed to help you organize, track, and optimize your exam preparation.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Timer/Stopwatch -->
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-6">
+                    <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
+                        <div class="w-6 h-6 flex items-center justify-center text-blue-600">
+                            <i class="ri-timer-line"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Study Timer</h3>
+                    <p class="text-sm text-gray-600 mb-4">Track your study sessions with our customizable timer and analyze your productivity patterns.</p>
+                    
+                    <div class="bg-gray-50 rounded-lg p-4 mb-4 text-center">
+                        <div class="text-3xl font-bold text-gray-900 mb-1">25:00</div>
+                        <div class="flex justify-center space-x-2">
+                            <button class="px-3 py-1 bg-blue-500 text-white text-sm font-medium rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Start</button>
+                            <button class="px-3 py-1 bg-gray-200 text-gray-700 text-sm font-medium rounded-button hover:bg-gray-300 transition-colors whitespace-nowrap">Reset</button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center text-sm text-gray-600">
+                        <span>Pomodoro Timer</span>
+                        <label class="custom-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Note-taking -->
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-6">
+                    <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center mb-4">
+                        <div class="w-6 h-6 flex items-center justify-center text-green-600">
+                            <i class="ri-sticky-note-line"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Quick Notes</h3>
+                    <p class="text-sm text-gray-600 mb-4">Capture important concepts and create organized study notes for effective revision.</p>
+                    
+                    <div class="mb-4">
+                        <textarea class="w-full h-32 p-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500" placeholder="Type your notes here..."></textarea>
+                    </div>
+                    
+                    <div class="flex justify-between">
+                        <div class="flex space-x-2">
+                            <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-bold"></i>
+                                </div>
+                            </button>
+                            <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-italic"></i>
+                                </div>
+                            </button>
+                            <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-list-check"></i>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="px-3 py-1 bg-green-500 text-white text-sm font-medium rounded-button hover:bg-green-600 transition-colors whitespace-nowrap">Save Note</button>
+                    </div>
+                </div>
+                
+                <!-- Bookmark System -->
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-6">
+                    <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center mb-4">
+                        <div class="w-6 h-6 flex items-center justify-center text-purple-600">
+                            <i class="ri-bookmark-line"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Bookmarks</h3>
+                    <p class="text-sm text-gray-600 mb-4">Save important lessons, questions, and resources for quick access during your study sessions.</p>
+                    
+                    <div class="space-y-3 mb-4">
+                        <div class="flex items-center p-2 bg-gray-50 rounded-lg">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-file-list-3-line"></i>
+                                </div>
+                            </div>
+                            <div class="ml-2 flex-1">
+                                <p class="text-sm font-medium text-gray-900">TOEIC Reading Part 5 & 6</p>
+                                <p class="text-xs text-gray-500">Grammar & vocabulary questions</p>
+                            </div>
+                            <button class="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-gray-600">
+                                <i class="ri-delete-bin-line"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center p-2 bg-gray-50 rounded-lg">
+                            <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-file-paper-2-line"></i>
+                                </div>
+                            </div>
+                            <div class="ml-2 flex-1">
+                                <p class="text-sm font-medium text-gray-900">IELTS Writing Task 1</p>
+                                <p class="text-xs text-gray-500">Data interpretation strategies</p>
+                            </div>
+                            <button class="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-gray-600">
+                                <i class="ri-delete-bin-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full py-2 bg-purple-500 text-white text-sm font-medium rounded-button hover:bg-purple-600 transition-colors whitespace-nowrap">Add New Bookmark</button>
+                </div>
+                
+                <!-- Study Playlist -->
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-6">
+                    <div class="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center mb-4">
+                        <div class="w-6 h-6 flex items-center justify-center text-orange-600">
+                            <i class="ri-play-list-line"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Study Playlist</h3>
+                    <p class="text-sm text-gray-600 mb-4">Create custom learning sequences by combining different resources for focused study sessions.</p>
+                    
+                    <div class="space-y-3 mb-4">
+                        <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 flex items-center justify-center text-gray-400">
+                                    <i class="ri-drag-move-line"></i>
+                                </div>
+                                <p class="ml-2 text-sm font-medium text-gray-900">TOEIC Vocabulary Review</p>
+                            </div>
+                            <span class="text-xs text-gray-500">15 min</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 flex items-center justify-center text-gray-400">
+                                    <i class="ri-drag-move-line"></i>
+                                </div>
+                                <p class="ml-2 text-sm font-medium text-gray-900">Listening Practice</p>
+                            </div>
+                            <span class="text-xs text-gray-500">20 min</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 flex items-center justify-center text-gray-400">
+                                    <i class="ri-drag-move-line"></i>
+                                </div>
+                                <p class="ml-2 text-sm font-medium text-gray-900">Reading Comprehension</p>
+                            </div>
+                            <span class="text-xs text-gray-500">25 min</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full py-2 bg-orange-500 text-white text-sm font-medium rounded-button hover:bg-orange-600 transition-colors whitespace-nowrap">Start Playlist</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Success Stories</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Hear from students who achieved their target scores and advanced their careers with our exam preparation platform.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20Asian%20woman%20with%20a%20friendly%20smile%2C%20simple%20background&width=64&height=64&seq=testimonial1&orientation=squarish" class="w-16 h-16 rounded-full object-top object-cover" alt="Testimonial">
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-900">Mei Lin</h3>
+                            <p class="text-sm text-gray-600">TOEIC Score: 965</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex mb-4">
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-4">"The adaptive learning system helped me identify and focus on my weak areas. The practice tests were incredibly similar to the actual TOEIC exam, which made me feel confident on test day. I improved my score by 215 points in just 2 months!"</p>
+                    
+                    <div class="flex items-center text-sm text-gray-500">
+                        <div class="w-4 h-4 flex items-center justify-center">
+                            <i class="ri-briefcase-line"></i>
+                        </div>
+                        <span class="ml-1">Marketing Specialist at Global Tech</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20Indian%20man%20with%20a%20confident%20expression%2C%20simple%20background&width=64&height=64&seq=testimonial2&orientation=squarish" class="w-16 h-16 rounded-full object-top object-cover" alt="Testimonial">
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-900">Raj Patel</h3>
+                            <p class="text-sm text-gray-600">IELTS Score: 8.0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex mb-4">
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-4">"The speaking practice with AI feedback was a game-changer for me. I could practice anytime without feeling self-conscious. The writing templates and sample essays helped me structure my responses effectively. I got the score I needed for my master's program!"</p>
+                    
+                    <div class="flex items-center text-sm text-gray-500">
+                        <div class="w-4 h-4 flex items-center justify-center">
+                            <i class="ri-graduation-cap-line"></i>
+                        </div>
+                        <span class="ml-1">PhD Student at Cambridge University</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20Latino%20man%20with%20a%20casual%20style%2C%20simple%20background&width=64&height=64&seq=testimonial3&orientation=squarish" class="w-16 h-16 rounded-full object-top object-cover" alt="Testimonial">
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-900">Carlos Mendez</h3>
+                            <p class="text-sm text-gray-600">SAT Score: 1480</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex mb-4">
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="w-4 h-4 flex items-center justify-center text-yellow-500">
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-4">"The gamification elements kept me motivated throughout my SAT prep. The detailed explanations for each question helped me understand the reasoning behind the answers. The math tutorials were especially helpful. I got accepted to my dream college!"</p>
+                    
+                    <div class="flex items-center text-sm text-gray-500">
+                        <div class="w-4 h-4 flex items-center justify-center">
+                            <i class="ri-building-line"></i>
+                        </div>
+                        <span class="ml-1">Freshman at Stanford University</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-primary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Ready to Achieve Your Target Score?</h2>
+            <p class="text-xl text-white/90 mb-8 max-w-3xl mx-auto">Join thousands of successful students who have transformed their exam preparation with our adaptive learning platform.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="px-8 py-3 bg-white text-primary font-medium rounded-button shadow-lg hover:bg-gray-100 transition-colors whitespace-nowrap">Start Free Trial</button>
+                <button class="px-8 py-3 bg-transparent text-white font-medium rounded-button border border-white hover:bg-white/10 transition-colors whitespace-nowrap">View Pricing Plans</button>
+            </div>
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-8">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-user-line"></i>
+                        </div>
+                    </div>
+                    <div class="ml-3 text-left">
+                        <p class="text-white font-medium">50,000+</p>
+                        <p class="text-white/70 text-sm">Active Students</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-book-open-line"></i>
+                        </div>
+                    </div>
+                    <div class="ml-3 text-left">
+                        <p class="text-white font-medium">1,200+</p>
+                        <p class="text-white/70 text-sm">Lessons & Resources</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-trophy-line"></i>
+                        </div>
+                    </div>
+                    <div class="ml-3 text-left">
+                        <p class="text-white font-medium">95%</p>
+                        <p class="text-white/70 text-sm">Success Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                <div class="lg:col-span-2">
+                    <a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">logo</a>
+                    <p class="text-gray-400 mb-6">Advanced English exam preparation with adaptive learning technology. Helping students worldwide achieve their target scores in TOEIC, IELTS, and SAT exams.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-facebook-fill"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-twitter-x-fill"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-instagram-fill"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-youtube-fill"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Exam Preparation</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">TOEIC Preparation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">IELTS Academic</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">IELTS General</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">SAT Reading & Writing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">SAT Math</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Study Materials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Practice Tests</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Video Tutorials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Vocabulary Builder</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Grammar Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Company</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 LinguaPrep. All rights reserved.</p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Cookie Policy</a>
+                </div>
+                <div class="flex items-center mt-4 md:mt-0">
+                    <div class="flex space-x-3">
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-visa-fill text-gray-400 text-xl"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-mastercard-fill text-gray-400 text-xl"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-paypal-fill text-gray-400 text-xl"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-apple-fill text-gray-400 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script id="chartScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Study Time Chart
+            const studyTimeChart = echarts.init(document.getElementById('studyTimeChart'));
+            const studyTimeOption = {
+                animation: false,
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    textStyle: {
+                        color: '#1f2937'
+                    },
+                    borderWidth: 0,
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(0, 0, 0, 0.1)'
+                },
+                grid: {
+                    left: '0',
+                    right: '0',
+                    top: '10',
+                    bottom: '0',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    axisLine: {
+                        lineStyle: {
+                            color: '#e5e7eb'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#6b7280'
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        color: '#6b7280'
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#f3f4f6'
+                        }
+                    }
+                },
+                series: [
+                    {
+                        name: 'Study Time (minutes)',
+                        type: 'line',
+                        data: [45, 60, 35, 50, 65, 40, 0],
+                        smooth: true,
+                        symbol: 'none',
+                        lineStyle: {
+                            width: 3,
+                            color: 'rgba(87, 181, 231, 1)'
+                        },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                {
+                                    offset: 0,
+                                    color: 'rgba(87, 181, 231, 0.2)'
+                                },
+                                {
+                                    offset: 1,
+                                    color: 'rgba(87, 181, 231, 0.05)'
+                                }
+                            ])
+                        }
+                    }
+                ]
+            };
+            studyTimeChart.setOption(studyTimeOption);
+
+            // Skill Chart
+            const skillChart = echarts.init(document.getElementById('skillChart'));
+            const skillOption = {
+                animation: false,
+                tooltip: {
+                    trigger: 'item',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    textStyle: {
+                        color: '#1f2937'
+                    },
+                    borderWidth: 0,
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(0, 0, 0, 0.1)'
+                },
+                radar: {
+                    indicator: [
+                        { name: 'Reading', max: 100 },
+                        { name: 'Listening', max: 100 },
+                        { name: 'Speaking', max: 100 },
+                        { name: 'Writing', max: 100 },
+                        { name: 'Grammar', max: 100 },
+                        { name: 'Vocabulary', max: 100 }
+                    ],
+                    splitArea: {
+                        areaStyle: {
+                            color: ['#f9fafb']
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#e5e7eb'
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#e5e7eb'
+                        }
+                    },
+                    name: {
+                        textStyle: {
+                            color: '#6b7280'
+                        }
+                    }
+                },
+                series: [
+                    {
+                        name: 'Skill Proficiency',
+                        type: 'radar',
+                        data: [
+                            {
+                                value: [85, 65, 55, 70, 80, 75],
+                                name: 'Current Level',
+                                areaStyle: {
+                                    color: 'rgba(87, 181, 231, 0.1)'
+                                },
+                                lineStyle: {
+                                    color: 'rgba(87, 181, 231, 1)',
+                                    width: 2
+                                },
+                                itemStyle: {
+                                    color: 'rgba(87, 181, 231, 1)'
+                                }
+                            }
+                        ]
+                    }
+                ]
+            };
+            skillChart.setOption(skillOption);
+
+            // Resize charts when window size changes
+            window.addEventListener('resize', function() {
+                studyTimeChart.resize();
+                skillChart.resize();
+            });
+        });
+    </script>
+
+    <script id="tabSwitcherScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Here you would typically show/hide content based on the selected tab
+                    const tabName = this.getAttribute('data-tab');
+                    console.log(`Tab switched to: ${tabName}`);
+                    // For a real implementation, you would show/hide content here
+                });
+            });
+        });
+    </script>
+
+    <script id="customControlsScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom checkbox functionality
+            const customCheckboxes = document.querySelectorAll('.custom-checkbox');
+            customCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('click', function() {
+                    const input = this.querySelector('input');
+                    input.checked = !input.checked;
+                });
+            });
+            
+            // Custom switch functionality
+            const customSwitches = document.querySelectorAll('.custom-switch input');
+            customSwitches.forEach(switchInput => {
+                switchInput.addEventListener('change', function() {
+                    console.log(`Switch toggled: ${this.checked ? 'ON' : 'OFF'}`);
+                });
+            });
+            
+            // Custom range slider functionality
+            const customRanges = document.querySelectorAll('.custom-range');
+            customRanges.forEach(range => {
+                range.addEventListener('input', function() {
+                    console.log(`Range value: ${this.value}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
