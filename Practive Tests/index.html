@@ -1,0 +1,2746 @@
+undefined<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Practice Test</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#6366f1'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4f46e5;
+            cursor: pointer;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4f46e5;
+            cursor: pointer;
+            border: none;
+        }
+        input[type="checkbox"] {
+            display: none;
+        }
+        .custom-checkbox {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        input[type="checkbox"]:checked + .custom-checkbox {
+            background: #4f46e5;
+            border-color: #4f46e5;
+        }
+        input[type="checkbox"]:checked + .custom-checkbox:after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .custom-radio {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        input[type="radio"] {
+            display: none;
+        }
+        input[type="radio"]:checked + .custom-radio {
+            border-color: #4f46e5;
+        }
+        input[type="radio"]:checked + .custom-radio:after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4f46e5;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+        .switch input {
+            display: none;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e7eb;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #4f46e5;
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+        .audio-player {
+            width: 100%;
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .progress-bar {
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            position: relative;
+        }
+        .progress {
+            height: 100%;
+            background: #4f46e5;
+            border-radius: 3px;
+            width: 30%;
+        }
+        .progress-handle {
+            width: 12px;
+            height: 12px;
+            background: #4f46e5;
+            border-radius: 50%;
+            position: absolute;
+            top: -3px;
+            left: 30%;
+            margin-left: -6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-['Pacifico'] text-primary mr-10">logo</a>
+                <nav class="hidden md:flex space-x-8">
+                    <div class="relative group">
+                        <button class="flex items-center text-gray-700 hover:text-primary">
+                            Exams
+                            <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md p-2 hidden group-hover:block z-10">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">TOEFL</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">IELTS</a>
+                            <a href="https://readdy.ai/home/d9ada839-e5ea-4775-aff2-3dd15d71dc5e/b027fe75-bfaa-40e3-a8bb-ffba32657a34" data-readdy="true" class="block px-4 py-2 text-sm bg-primary text-white rounded-md">SAT</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Cambridge</a>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-700 hover:text-primary">Resources</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">Community</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">Support</a>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="hidden md:flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200">
+                    <i class="ri-search-line"></i>
+                </button>
+                <button class="hidden md:flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200">
+                    <i class="ri-notification-3-line"></i>
+                </button>
+                <div class="relative">
+                    <button class="flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full">
+                        <i class="ri-user-line"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-2">
+            <div class="flex items-center text-sm text-gray-500">
+                <a href="#" class="hover:text-primary">Home</a>
+                <div class="w-4 h-4 flex items-center justify-center mx-1">
+                    <i class="ri-arrow-right-s-line"></i>
+                </div>
+                <a href="https://readdy.ai/home/d9ada839-e5ea-4775-aff2-3dd15d71dc5e/b027fe75-bfaa-40e3-a8bb-ffba32657a34" data-readdy="true" class="hover:text-primary">SAT</a>
+                <div class="w-4 h-4 flex items-center justify-center mx-1">
+                    <i class="ri-arrow-right-s-line"></i>
+                </div>
+                <span class="text-gray-700 font-medium">Practice Test</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="relative bg-gradient-to-r from-indigo-600 to-primary overflow-hidden">
+        <div style="background-image: url('https://readdy.ai/api/search-image?query=A%20professional%20educational%20setting%20with%20students%20studying%20for%20TOEIC%20exam%2C%20showing%20headphones%20for%20listening%20practice%20and%20books%20for%20reading%20practice.%20The%20image%20has%20a%20clean%2C%20modern%20aesthetic%20with%20soft%20lighting%20and%20a%20blue-purple%20gradient%20on%20the%20left%20side%20that%20smoothly%20transitions%20to%20show%20clear%20study%20materials%20on%20the%20right.%20Perfect%20for%20a%20language%20learning%20website%20hero%20section.&width=1200&height=400&seq=1&orientation=landscape'); background-position: center; background-size: cover;" class="absolute inset-0 opacity-20"></div>
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">SAT Practice Test</h1>
+                <p class="text-xl text-white/90 mb-8">Master the essential components of the TOEIC test with our comprehensive preparation resources, practice exercises, and expert strategies.</p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-white text-primary px-6 py-3 rounded-button font-medium hover:bg-gray-100 transition shadow-lg whitespace-nowrap">
+                        Start Practice Test
+                    </button>
+                    <button class="bg-white/20 text-white border border-white/30 px-6 py-3 rounded-button font-medium hover:bg-white/30 transition whitespace-nowrap">
+                        View Study Plan
+                    </button>
+                </div>
+                <div class="mt-8 grid grid-cols-3 gap-6 max-w-2xl">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                        <div class="text-3xl font-bold text-white mb-1">45+</div>
+                        <div class="text-white/80 text-sm">Practice Tests</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                        <div class="text-3xl font-bold text-white mb-1">2,500+</div>
+                        <div class="text-white/80 text-sm">Practice Questions</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                        <div class="text-3xl font-bold text-white mb-1">94%</div>
+                        <div class="text-white/80 text-sm">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12">
+        <!-- Tab Navigation -->
+        <div class="mb-8 border-b">
+            <div class="flex space-x-1 overflow-x-auto">
+                <button class="tab-button active px-6 py-3 font-medium text-primary border-b-2 border-primary whitespace-nowrap" data-tab="overview">Overview</button>
+                <button class="tab-button px-6 py-3 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap" data-tab="listening">Listening Section</button>
+                <button class="tab-button px-6 py-3 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap" data-tab="reading">Reading Section</button>
+                <button class="tab-button px-6 py-3 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap" data-tab="practice">Practice Tests</button>
+                <button class="tab-button px-6 py-3 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap" data-tab="study-plan">Study Plan</button>
+                <button class="tab-button px-6 py-3 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap" data-tab="resources">Resources</button>
+            </div>
+        </div>
+
+        <!-- Overview Tab Content -->
+        <div id="overview" class="tab-content active">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h2 class="text-2xl font-bold mb-4">About TOEIC Listening & Reading Test</h2>
+                        <p class="text-gray-700 mb-4">The TOEIC Listening and Reading Test is a two-hour multiple-choice test that consists of 200 questions divided into two sections. It is designed to assess how well you can communicate in English in business, commerce, and industry settings.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                            <div class="border border-gray-200 rounded-lg p-5">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                        <i class="ri-headphone-line text-xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold ml-3">Listening Section</h3>
+                                </div>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-checkbox-circle-line"></i>
+                                        </div>
+                                        <span class="ml-2">100 questions (45 minutes)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-checkbox-circle-line"></i>
+                                        </div>
+                                        <span class="ml-2">Four parts: Photographs, Question-Response, Conversations, Talks</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-checkbox-circle-line"></i>
+                                        </div>
+                                        <span class="ml-2">Score range: 5 to 495 points</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-5">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                        <i class="ri-book-open-line text-xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold ml-3">Reading Section</h3>
+                                </div>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-checkbox-circle-line"></i>
+                                        </div>
+                                        <span class="ml-2">100 questions (75 minutes)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-checkbox-circle-line"></i>
+                                        </div>
+                                        <span class="ml-2">Three parts: Incomplete Sentences, Text Completion, Reading Comprehension</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-checkbox-circle-line"></i>
+                                        </div>
+                                        <span class="ml-2">Score range: 5 to 495 points</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h2 class="text-2xl font-bold mb-4">TOEIC Score Interpretation</h2>
+                        <p class="text-gray-700 mb-6">The TOEIC Listening and Reading Test provides scores on a scale from 10 to 990 points. Your score reflects your English proficiency level in workplace contexts.</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">Score Range</th>
+                                        <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">Proficiency Level</th>
+                                        <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="px-4 py-3 text-sm text-gray-700 border-b">905-990</td>
+                                        <td class="px-4 py-3 text-sm font-medium text-primary border-b">Advanced</td>
+                                        <td class="px-4 py-3 text-sm text-gray-700 border-b">Can communicate effectively in any business situation</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-sm text-gray-700 border-b">785-900</td>
+                                        <td class="px-4 py-3 text-sm font-medium text-primary border-b">Upper Intermediate</td>
+                                        <td class="px-4 py-3 text-sm text-gray-700 border-b">Can communicate effectively in most business situations</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-sm text-gray-700 border-b">605-780</td>
+                                        <td class="px-4 py-3 text-sm font-medium text-primary border-b">Intermediate</td>
+                                        <td class="px-4 py-3 text-sm text-gray-700 border-b">Can communicate in many business situations</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-sm text-gray-700 border-b">405-600</td>
+                                        <td class="px-4 py-3 text-sm font-medium text-primary border-b">Lower Intermediate</td>
+                                        <td class="px-4 py-3 text-sm text-gray-700 border-b">Can communicate in familiar business situations</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-sm text-gray-700 border-b">255-400</td>
+                                        <td class="px-4 py-3 text-sm font-medium text-primary border-b">Elementary</td>
+                                        <td class="px-4 py-3 text-sm text-gray-700 border-b">Can communicate in limited business situations</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-sm text-gray-700">10-250</td>
+                                        <td class="px-4 py-3 text-sm font-medium text-primary">Beginner</td>
+                                        <td class="px-4 py-3 text-sm text-gray-700">Can communicate only in very simple business situations</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h3 class="text-lg font-bold mb-4">Your Progress</h3>
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm text-gray-600">Overall Completion</span>
+                                <span class="text-sm font-medium">42%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 42%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm text-gray-600">Listening Section</span>
+                                <span class="text-sm font-medium">58%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 58%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm text-gray-600">Reading Section</span>
+                                <span class="text-sm font-medium">26%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 26%"></div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">
+                            Continue Learning
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h3 class="text-lg font-bold mb-4">Upcoming Test Dates</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 flex flex-col items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0">
+                                    <span class="text-xs font-medium">JUN</span>
+                                    <span class="text-lg font-bold">15</span>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-900">TOEIC Official Test</h4>
+                                    <p class="text-sm text-gray-600">New York Testing Center</p>
+                                    <p class="text-xs text-gray-500 mt-1">Registration closes in 3 days</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 flex flex-col items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0">
+                                    <span class="text-xs font-medium">JUL</span>
+                                    <span class="text-lg font-bold">22</span>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-900">TOEIC Official Test</h4>
+                                    <p class="text-sm text-gray-600">Online Proctored Exam</p>
+                                    <p class="text-xs text-gray-500 mt-1">Registration closes in 2 weeks</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 flex flex-col items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0">
+                                    <span class="text-xs font-medium">AUG</span>
+                                    <span class="text-lg font-bold">08</span>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-900">TOEIC Official Test</h4>
+                                    <p class="text-sm text-gray-600">Boston Testing Center</p>
+                                    <p class="text-xs text-gray-500 mt-1">Registration closes in 4 weeks</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 border border-primary text-primary py-2 rounded-button font-medium hover:bg-primary/5 transition whitespace-nowrap">
+                            View All Test Dates
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listening Tab Content -->
+        <div id="listening" class="tab-content">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h2 class="text-2xl font-bold mb-4">TOEIC Listening Section Overview</h2>
+                        <p class="text-gray-700 mb-6">The Listening section consists of 100 questions administered by CD player. It assesses your ability to understand spoken English in various contexts. You'll have 45 minutes to complete this section.</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                    <span class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full text-sm font-bold mr-3">1</span>
+                                    Part 1: Photographs (6 questions)
+                                </h3>
+                                <p class="text-gray-700 mb-4 pl-11">You will look at a photograph and listen to four statements. You must select the statement that best describes the photograph.</p>
+                                <div class="bg-gray-50 rounded-lg p-5 border border-gray-200">
+                                    <h4 class="font-medium mb-3">Sample Question:</h4>
+                                    <div class="mb-4">
+                                        <img src="https://readdy.ai/api/search-image?query=A%20business%20meeting%20in%20a%20modern%20conference%20room%20with%20several%20professionals%20sitting%20around%20a%20table%20with%20laptops%20and%20documents%2C%20discussing%20project%20details.%20The%20image%20has%20natural%20lighting%20and%20a%20professional%20corporate%20atmosphere.&width=600&height=400&seq=2&orientation=landscape" alt="Business Meeting" class="w-full h-48 object-cover rounded-lg mb-4">
+                                        <div class="audio-player mb-4">
+                                            <div class="flex items-center justify-between mb-3">
+                                                <button class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full">
+                                                    <i class="ri-play-fill"></i>
+                                                </button>
+                                                <div class="flex-1 mx-3">
+                                                    <div class="progress-bar">
+                                                        <div class="progress"></div>
+                                                        <div class="progress-handle"></div>
+                                                    </div>
+                                                </div>
+                                                <span class="text-sm text-gray-600">0:45</span>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-3">
+                                            <div class="flex items-center">
+                                                <input type="radio" id="option1" name="photo-question" class="custom-radio-input">
+                                                <label for="option1" class="custom-radio"></label>
+                                                <label for="option1" class="ml-3 text-gray-700">(A) The people are leaving the conference room.</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" id="option2" name="photo-question" class="custom-radio-input">
+                                                <label for="option2" class="custom-radio"></label>
+                                                <label for="option2" class="ml-3 text-gray-700">(B) The people are having a meeting around the table.</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" id="option3" name="photo-question" class="custom-radio-input">
+                                                <label for="option3" class="custom-radio"></label>
+                                                <label for="option3" class="ml-3 text-gray-700">(C) The people are setting up the projector.</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" id="option4" name="photo-question" class="custom-radio-input">
+                                                <label for="option4" class="custom-radio"></label>
+                                                <label for="option4" class="ml-3 text-gray-700">(D) The people are standing near the window.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                    <span class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full text-sm font-bold mr-3">2</span>
+                                    Part 2: Question-Response (25 questions)
+                                </h3>
+                                <p class="text-gray-700 mb-4 pl-11">You will hear a question or statement followed by three responses. You must select the most appropriate response to the question or statement.</p>
+                                <div class="bg-gray-50 rounded-lg p-5 border border-gray-200">
+                                    <h4 class="font-medium mb-3">Sample Question:</h4>
+                                    <div class="audio-player mb-4">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <button class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full">
+                                                <i class="ri-play-fill"></i>
+                                            </button>
+                                            <div class="flex-1 mx-3">
+                                                <div class="progress-bar">
+                                                    <div class="progress"></div>
+                                                    <div class="progress-handle"></div>
+                                                </div>
+                                            </div>
+                                            <span class="text-sm text-gray-600">0:12</span>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center">
+                                            <input type="radio" id="qr-option1" name="qr-question" class="custom-radio-input">
+                                            <label for="qr-option1" class="custom-radio"></label>
+                                            <label for="qr-option1" class="ml-3 text-gray-700">(A) I'll be there at 3 o'clock.</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="radio" id="qr-option2" name="qr-question" class="custom-radio-input">
+                                            <label for="qr-option2" class="custom-radio"></label>
+                                            <label for="qr-option2" class="ml-3 text-gray-700">(B) The meeting room is on the second floor.</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="radio" id="qr-option3" name="qr-question" class="custom-radio-input">
+                                            <label for="qr-option3" class="custom-radio"></label>
+                                            <label for="qr-option3" class="ml-3 text-gray-700">(C) Yes, I spoke with her yesterday.</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                    <span class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full text-sm font-bold mr-3">3</span>
+                                    Part 3: Conversations (39 questions)
+                                </h3>
+                                <p class="text-gray-700 mb-4 pl-11">You will listen to a conversation between two or more people. Then you will answer 3-4 questions about the content of the conversation.</p>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                    <span class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full text-sm font-bold mr-3">4</span>
+                                    Part 4: Talks (30 questions)
+                                </h3>
+                                <p class="text-gray-700 mb-4 pl-11">You will listen to a short talk (announcement, advertisement, etc.). Then you will answer 3 questions about the content of the talk.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h2 class="text-2xl font-bold mb-4">Listening Strategies</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="border border-gray-200 rounded-lg p-5">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                        <i class="ri-lightbulb-line"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold ml-3">Before Listening</h3>
+                                </div>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Read directions and questions carefully</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Predict what you might hear</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Be aware of the question types</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-5">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                        <i class="ri-volume-up-line"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold ml-3">During Listening</h3>
+                                </div>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Focus on key information (who, what, where, when, why)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Pay attention to tone and attitude</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Listen for signal words and transitions</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-5">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                        <i class="ri-time-line"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold ml-3">Time Management</h3>
+                                </div>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Move on if you miss a question</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Use the time between questions to prepare for the next one</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Answer all questions, even if you have to guess</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-5">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                        <i class="ri-error-warning-line"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold ml-3">Common Pitfalls</h3>
+                                </div>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-close-line"></i>
+                                        </div>
+                                        <span class="ml-2">Getting distracted by unfamiliar words</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-close-line"></i>
+                                        </div>
+                                        <span class="ml-2">Trying to understand every single word</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-close-line"></i>
+                                        </div>
+                                        <span class="ml-2">Translating to your native language</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h3 class="text-lg font-bold mb-4">Listening Practice</h3>
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition cursor-pointer">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium">Photographs Practice</h4>
+                                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Beginner</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-3">10 questions • 10 minutes</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <div class="w-4 h-4 flex items-center justify-center">
+                                            <i class="ri-user-line"></i>
+                                        </div>
+                                        <span class="ml-1">1,245 attempts</span>
+                                    </div>
+                                    <button class="text-primary text-sm font-medium whitespace-nowrap">Start Practice</button>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition cursor-pointer">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium">Question-Response Drill</h4>
+                                    <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">Intermediate</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-3">25 questions • 20 minutes</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <div class="w-4 h-4 flex items-center justify-center">
+                                            <i class="ri-user-line"></i>
+                                        </div>
+                                        <span class="ml-1">2,389 attempts</span>
+                                    </div>
+                                    <button class="text-primary text-sm font-medium whitespace-nowrap">Start Practice</button>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition cursor-pointer">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium">Conversations Practice</h4>
+                                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Advanced</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-3">15 questions • 25 minutes</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <div class="w-4 h-4 flex items-center justify-center">
+                                            <i class="ri-user-line"></i>
+                                        </div>
+                                        <span class="ml-1">1,876 attempts</span>
+                                    </div>
+                                    <button class="text-primary text-sm font-medium whitespace-nowrap">Start Practice</button>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition cursor-pointer">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium">Talks & Announcements</h4>
+                                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Advanced</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-3">12 questions • 20 minutes</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <div class="w-4 h-4 flex items-center justify-center">
+                                            <i class="ri-user-line"></i>
+                                        </div>
+                                        <span class="ml-1">1,532 attempts</span>
+                                    </div>
+                                    <button class="text-primary text-sm font-medium whitespace-nowrap">Start Practice</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 bg-primary text-white py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">
+                            View All Listening Exercises
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-bold mb-4">Recommended Resources</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0">
+                                    <i class="ri-video-line"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">Mastering TOEIC Listening</h4>
+                                    <p class="text-sm text-gray-600">Video course • 2.5 hours</p>
+                                    <a href="#" class="text-xs text-primary font-medium mt-1 inline-block">Watch Now</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0">
+                                    <i class="ri-file-pdf-line"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">Essential Listening Vocabulary</h4>
+                                    <p class="text-sm text-gray-600">PDF • 45 pages</p>
+                                    <a href="#" class="text-xs text-primary font-medium mt-1 inline-block">Download</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0">
+                                    <i class="ri-headphone-line"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">Business English Podcasts</h4>
+                                    <p class="text-sm text-gray-600">Audio • 32 episodes</p>
+                                    <a href="#" class="text-xs text-primary font-medium mt-1 inline-block">Listen Now</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">Listening Strategy Guide</h4>
+                                    <p class="text-sm text-gray-600">Article • 10 min read</p>
+                                    <a href="#" class="text-xs text-primary font-medium mt-1 inline-block">Read Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reading Tab Content -->
+        <div id="reading" class="tab-content">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h2 class="text-2xl font-bold mb-4">TOEIC Reading Section Overview</h2>
+                        <p class="text-gray-700 mb-6">The Reading section consists of 100 questions to be completed in 75 minutes. It assesses your ability to understand written English in workplace contexts. This section is divided into three parts.</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                    <span class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full text-sm font-bold mr-3">5</span>
+                                    Part 5: Incomplete Sentences (30 questions)
+                                </h3>
+                                <p class="text-gray-700 mb-4 pl-11">You will read a sentence with a missing word or phrase. You must select the correct answer from four choices to complete the sentence.</p>
+                                <div class="bg-gray-50 rounded-lg p-5 border border-gray-200">
+                                    <h4 class="font-medium mb-3">Sample Question:</h4>
+                                    <p class="text-gray-700 mb-4">The marketing department is ________ a new advertising campaign for the summer product line.</p>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center">
+                                            <input type="radio" id="reading-option1" name="reading-question" class="custom-radio-input">
+                                            <label for="reading-option1" class="custom-radio"></label>
+                                            <label for="reading-option1" class="ml-3 text-gray-700">(A) develops</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="radio" id="reading-option2" name="reading-question" class="custom-radio-input">
+                                            <label for="reading-option2" class="custom-radio"></label>
+                                            <label for="reading-option2" class="ml-3 text-gray-700">(B) developing</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="radio" id="reading-option3" name="reading-question" class="custom-radio-input">
+                                            <label for="reading-option3" class="custom-radio"></label>
+                                            <label for="reading-option3" class="ml-3 text-gray-700">(C) develop</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="radio" id="reading-option4" name="reading-question" class="custom-radio-input">
+                                            <label for="reading-option4" class="custom-radio"></label>
+                                            <label for="reading-option4" class="ml-3 text-gray-700">(D) to develop</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                    <span class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full text-sm font-bold mr-3">6</span>
+                                    Part 6: Text Completion (16 questions)
+                                </h3>
+                                <p class="text-gray-700 mb-4 pl-11">You will read a text with four missing words or phrases. You must select the correct answer from four choices for each gap.</p>
+                                <div class="bg-gray-50 rounded-lg p-5 border border-gray-200">
+                                    <h4 class="font-medium mb-3">Sample Question:</h4>
+                                    <div class="mb-4">
+                                        <p class="text-gray-700 mb-4">
+                                            To: All Staff<br>
+                                            From: Human Resources<br>
+                                            Subject: Office Relocation<br><br>
+                                            
+                                            We are pleased to announce that our company will be moving to a new office location next month. The new building is <span class="bg-primary/10 px-1 rounded">[1]</span> in the downtown business district and offers more space and modern facilities. The relocation is <span class="bg-primary/10 px-1 rounded">[2]</span> for the weekend of July 15-16 to minimize disruption to our operations.
+                                        </p>
+                                        
+                                        <div class="mb-4">
+                                            <p class="font-medium mb-2">[1]</p>
+                                            <div class="space-y-2">
+                                                <div class="flex items-center">
+                                                    <input type="radio" id="text-option1" name="text-question" class="custom-radio-input">
+                                                    <label for="text-option1" class="custom-radio"></label>
+                                                    <label for="text-option1" class="ml-3 text-gray-700">(A) locate</label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input type="radio" id="text-option2" name="text-question" class="custom-radio-input">
+                                                    <label for="text-option2" class="custom-radio"></label>
+                                                    <label for="text-option2" class="ml-3 text-gray-700">(B) locates</label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input type="radio" id="text-option3" name="text-question" class="custom-radio-input">
+                                                    <label for="text-option3" class="custom-radio"></label>
+                                                    <label for="text-option3" class="ml-3 text-gray-700">(C) located</label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input type="radio" id="text-option4" name="text-question" class="custom-radio-input">
+                                                    <label for="text-option4" class="custom-radio"></label>
+                                                    <label for="text-option4" class="ml-3 text-gray-700">(D) location</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                    <span class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full text-sm font-bold mr-3">7</span>
+                                    Part 7: Reading Comprehension (54 questions)
+                                </h3>
+                                <p class="text-gray-700 mb-4 pl-11">You will read various texts (letters, emails, articles, etc.) and answer questions about the content. Some texts may be paired with related information.</p>
+                                <div class="bg-gray-50 rounded-lg p-5 border border-gray-200">
+                                    <h4 class="font-medium mb-3">Sample Text Types:</h4>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li class="flex items-start">
+                                            <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                                <i class="ri-mail-line"></i>
+                                            </div>
+                                            <span class="ml-2">Emails and memos</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                                <i class="ri-article-line"></i>
+                                            </div>
+                                            <span class="ml-2">Articles and reports</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                                <i class="ri-advertisement-line"></i>
+                                            </div>
+                                            <span class="ml-2">Advertisements and notices</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                                <i class="ri-file-list-line"></i>
+                                            </div>
+                                            <span class="ml-2">Forms and tables</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                                <i class="ri-chat-1-line"></i>
+                                            </div>
+                                            <span class="ml-2">Letters and messages</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h2 class="text-2xl font-bold mb-4">Reading Strategies</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="border border-gray-200 rounded-lg p-5">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                        <i class="ri-search-line"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold ml-3">Skimming & Scanning</h3>
+                                </div>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Skim for general meaning before reading in detail</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Scan for specific information like dates, names, or numbers</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Read questions first to know what to look for</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-5">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                        <i class="ri-file-text-line"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold ml-3">Text Structure</h3>
+                                </div>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Identify the text type (email, article, etc.)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Pay attention to headings, subheadings, and formatting</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Look for topic sentences at the beginning of paragraphs</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-5">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                        <i class="ri-time-line"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold ml-3">Time Management</h3>
+                                </div>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Allocate time based on question difficulty and point value</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Don't spend too much time on any single question</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Leave difficult questions and return if time permits</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-5">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                        <i class="ri-error-warning-line"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold ml-3">Common Pitfalls</h3>
+                                </div>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-close-line"></i>
+                                        </div>
+                                        <span class="ml-2">Getting stuck on unknown vocabulary</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-close-line"></i>
+                                        </div>
+                                        <span class="ml-2">Reading too slowly and running out of time</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-close-line"></i>
+                                        </div>
+                                        <span class="ml-2">Misunderstanding the question's intent</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h3 class="text-lg font-bold mb-4">Reading Practice</h3>
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition cursor-pointer">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium">Grammar & Vocabulary</h4>
+                                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Beginner</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-3">30 questions • 20 minutes</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <div class="w-4 h-4 flex items-center justify-center">
+                                            <i class="ri-user-line"></i>
+                                        </div>
+                                        <span class="ml-1">2,134 attempts</span>
+                                    </div>
+                                    <button class="text-primary text-sm font-medium whitespace-nowrap">Start Practice</button>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition cursor-pointer">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium">Text Completion</h4>
+                                    <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">Intermediate</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-3">16 questions • 15 minutes</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <div class="w-4 h-4 flex items-center justify-center">
+                                            <i class="ri-user-line"></i>
+                                        </div>
+                                        <span class="ml-1">1,876 attempts</span>
+                                    </div>
+                                    <button class="text-primary text-sm font-medium whitespace-nowrap">Start Practice</button>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition cursor-pointer">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium">Business Documents</h4>
+                                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Advanced</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-3">20 questions • 25 minutes</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <div class="w-4 h-4 flex items-center justify-center">
+                                            <i class="ri-user-line"></i>
+                                        </div>
+                                        <span class="ml-1">1,543 attempts</span>
+                                    </div>
+                                    <button class="text-primary text-sm font-medium whitespace-nowrap">Start Practice</button>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition cursor-pointer">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium">Double Passages</h4>
+                                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Advanced</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-3">15 questions • 20 minutes</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <div class="w-4 h-4 flex items-center justify-center">
+                                            <i class="ri-user-line"></i>
+                                        </div>
+                                        <span class="ml-1">1,298 attempts</span>
+                                    </div>
+                                    <button class="text-primary text-sm font-medium whitespace-nowrap">Start Practice</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 bg-primary text-white py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">
+                            View All Reading Exercises
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-bold mb-4">Vocabulary Builder</h3>
+                        <p class="text-sm text-gray-600 mb-4">Expand your business vocabulary with these common TOEIC words.</p>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <div>
+                                    <span class="font-medium">accommodate</span>
+                                    <p class="text-xs text-gray-600">to provide someone with a place to live or stay</p>
+                                </div>
+                                <div class="w-6 h-6 flex items-center justify-center text-primary cursor-pointer">
+                                    <i class="ri-volume-up-line"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <div>
+                                    <span class="font-medium">endeavor</span>
+                                    <p class="text-xs text-gray-600">to try hard to achieve something</p>
+                                </div>
+                                <div class="w-6 h-6 flex items-center justify-center text-primary cursor-pointer">
+                                    <i class="ri-volume-up-line"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <div>
+                                    <span class="font-medium">facilitate</span>
+                                    <p class="text-xs text-gray-600">to make an action or process easier</p>
+                                </div>
+                                <div class="w-6 h-6 flex items-center justify-center text-primary cursor-pointer">
+                                    <i class="ri-volume-up-line"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <div>
+                                    <span class="font-medium">implement</span>
+                                    <p class="text-xs text-gray-600">to put a plan or system into effect</p>
+                                </div>
+                                <div class="w-6 h-6 flex items-center justify-center text-primary cursor-pointer">
+                                    <i class="ri-volume-up-line"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <div>
+                                    <span class="font-medium">negotiate</span>
+                                    <p class="text-xs text-gray-600">to discuss to reach an agreement</p>
+                                </div>
+                                <div class="w-6 h-6 flex items-center justify-center text-primary cursor-pointer">
+                                    <i class="ri-volume-up-line"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-primary/10 text-primary py-2 rounded-button font-medium hover:bg-primary/20 transition whitespace-nowrap">
+                            View Full Vocabulary List
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Practice Tests Tab Content -->
+        <div id="practice" class="tab-content">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold">Practice Tests</h2>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-1 text-sm border border-gray-300 rounded-full flex items-center text-gray-700 hover:border-primary hover:text-primary transition whitespace-nowrap">
+                                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                        <i class="ri-filter-3-line"></i>
+                                    </div>
+                                    Filter
+                                </button>
+                                <button class="px-3 py-1 text-sm border border-gray-300 rounded-full flex items-center text-gray-700 hover:border-primary hover:text-primary transition whitespace-nowrap">
+                                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                        <i class="ri-sort-desc"></i>
+                                    </div>
+                                    Sort
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex space-x-1 overflow-x-auto">
+                                <button class="px-1 py-1 text-sm bg-primary text-white rounded-full whitespace-nowrap">All Tests</button>
+                                <button class="px-1 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded-full whitespace-nowrap">Full Practice Tests</button>
+                                <button class="px-1 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded-full whitespace-nowrap">Listening Only</button>
+                                <button class="px-1 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded-full whitespace-nowrap">Reading Only</button>
+                                <button class="px-1 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded-full whitespace-nowrap">Mini Tests</button>
+                                <button class="px-1 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded-full whitespace-nowrap">Timed Tests</button>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 rounded-lg p-5 hover:border-primary transition">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h3 class="font-semibold text-lg mb-1">Full TOEIC Practice Test 1</h3>
+                                        <p class="text-gray-600 text-sm mb-3">Complete simulation of the TOEIC Listening & Reading Test</p>
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded text-xs">Full Test</span>
+                                            <span class="px-2 py-0.5 bg-purple-100 text-purple-800 rounded text-xs">2 hours</span>
+                                            <span class="px-2 py-0.5 bg-green-100 text-green-800 rounded text-xs">Beginner-Friendly</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-end">
+                                        <div class="flex items-center text-yellow-500 mb-1">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-fill"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.5</span>
+                                        </div>
+                                        <span class="text-sm text-gray-500">3,245 attempts</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 flex flex-wrap justify-between items-center">
+                                    <div class="flex items-center space-x-4">
+                                        <div>
+                                            <div class="text-xs text-gray-500 mb-1">Listening</div>
+                                            <div class="w-24 bg-gray-200 rounded-full h-2">
+                                                <div class="bg-primary h-2 rounded-full" style="width: 100%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs text-gray-500 mb-1">Reading</div>
+                                            <div class="w-24 bg-gray-200 rounded-full h-2">
+                                                <div class="bg-primary h-2 rounded-full" style="width: 100%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-primary/90 transition mt-4 sm:mt-0 whitespace-nowrap">
+                                        Start Test
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-5 hover:border-primary transition">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h3 class="font-semibold text-lg mb-1">Listening Practice Test</h3>
+                                        <p class="text-gray-600 text-sm mb-3">Focus on improving your listening skills</p>
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded text-xs">Listening Only</span>
+                                            <span class="px-2 py-0.5 bg-purple-100 text-purple-800 rounded text-xs">45 minutes</span>
+                                            <span class="px-2 py-0.5 bg-yellow-100 text-yellow-800 rounded text-xs">Intermediate</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-end">
+                                        <div class="flex items-center text-yellow-500 mb-1">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-line"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.0</span>
+                                        </div>
+                                        <span class="text-sm text-gray-500">2,178 attempts</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 flex flex-wrap justify-between items-center">
+                                    <div class="flex items-center space-x-4">
+                                        <div>
+                                            <div class="text-xs text-gray-500 mb-1">Listening</div>
+                                            <div class="w-24 bg-gray-200 rounded-full h-2">
+                                                <div class="bg-primary h-2 rounded-full" style="width: 100%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs text-gray-500 mb-1">Reading</div>
+                                            <div class="w-24 bg-gray-200 rounded-full h-2">
+                                                <div class="bg-gray-300 h-2 rounded-full" style="width: 100%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-primary/90 transition mt-4 sm:mt-0 whitespace-nowrap">
+                                        Start Test
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-5 hover:border-primary transition">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h3 class="font-semibold text-lg mb-1">Reading Practice Test</h3>
+                                        <p class="text-gray-600 text-sm mb-3">Focus on improving your reading comprehension</p>
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded text-xs">Reading Only</span>
+                                            <span class="px-2 py-0.5 bg-purple-100 text-purple-800 rounded text-xs">75 minutes</span>
+                                            <span class="px-2 py-0.5 bg-yellow-100 text-yellow-800 rounded text-xs">Intermediate</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-end">
+                                        <div class="flex items-center text-yellow-500 mb-1">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-line"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.2</span>
+                                        </div>
+                                        <span class="text-sm text-gray-500">1,932 attempts</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 flex flex-wrap justify-between items-center">
+                                    <div class="flex items-center space-x-4">
+                                        <div>
+                                            <div class="text-xs text-gray-500 mb-1">Listening</div>
+                                            <div class="w-24 bg-gray-200 rounded-full h-2">
+                                                <div class="bg-gray-300 h-2 rounded-full" style="width: 100%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs text-gray-500 mb-1">Reading</div>
+                                            <div class="w-24 bg-gray-200 rounded-full h-2">
+                                                <div class="bg-primary h-2 rounded-full" style="width: 100%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-primary/90 transition mt-4 sm:mt-0 whitespace-nowrap">
+                                        Start Test
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-5 hover:border-primary transition">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h3 class="font-semibold text-lg mb-1">Mini TOEIC Test</h3>
+                                        <p class="text-gray-600 text-sm mb-3">Quick practice with selected questions</p>
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded text-xs">Mini Test</span>
+                                            <span class="px-2 py-0.5 bg-purple-100 text-purple-800 rounded text-xs">30 minutes</span>
+                                            <span class="px-2 py-0.5 bg-green-100 text-green-800 rounded text-xs">All Levels</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-end">
+                                        <div class="flex items-center text-yellow-500 mb-1">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-fill"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.7</span>
+                                        </div>
+                                        <span class="text-sm text-gray-500">4,567 attempts</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 flex flex-wrap justify-between items-center">
+                                    <div class="flex items-center space-x-4">
+                                        <div>
+                                            <div class="text-xs text-gray-500 mb-1">Listening</div>
+                                            <div class="w-24 bg-gray-200 rounded-full h-2">
+                                                <div class="bg-primary h-2 rounded-full" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs text-gray-500 mb-1">Reading</div>
+                                            <div class="w-24 bg-gray-200 rounded-full h-2">
+                                                <div class="bg-primary h-2 rounded-full" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-primary/90 transition mt-4 sm:mt-0 whitespace-nowrap">
+                                        Start Test
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 flex justify-center">
+                            <button class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+                                Load More Tests
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h3 class="text-lg font-bold mb-4">Your Test History</h3>
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 rounded-lg p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-medium">Mini TOEIC Test</h4>
+                                    <span class="text-xs text-gray-500">June 8, 2025</span>
+                                </div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 flex items-center justify-center bg-green-100 text-green-800 rounded-full text-xs font-medium">
+                                            82%
+                                        </div>
+                                        <span class="text-sm text-gray-600 ml-2">Score: 410/495</span>
+                                    </div>
+                                    <button class="text-primary text-sm font-medium whitespace-nowrap">Review</button>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div>
+                                        <div class="text-xs text-gray-500 mb-1">Listening</div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-500 mb-1">Reading</div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-primary h-2 rounded-full" style="width: 79%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-medium">Listening Practice Test</h4>
+                                    <span class="text-xs text-gray-500">June 5, 2025</span>
+                                </div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 flex items-center justify-center bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">
+                                            76%
+                                        </div>
+                                        <span class="text-sm text-gray-600 ml-2">Score: 376/495</span>
+                                    </div>
+                                    <button class="text-primary text-sm font-medium whitespace-nowrap">Review</button>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div>
+                                        <div class="text-xs text-gray-500 mb-1">Listening</div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-primary h-2 rounded-full" style="width: 76%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-500 mb-1">Reading</div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-gray-300 h-2 rounded-full" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-medium">Full TOEIC Practice Test 1</h4>
+                                    <span class="text-xs text-gray-500">June 1, 2025</span>
+                                </div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 flex items-center justify-center bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">
+                                            71%
+                                        </div>
+                                        <span class="text-sm text-gray-600 ml-2">Score: 705/990</span>
+                                    </div>
+                                    <button class="text-primary text-sm font-medium whitespace-nowrap">Review</button>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div>
+                                        <div class="text-xs text-gray-500 mb-1">Listening</div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-primary h-2 rounded-full" style="width: 74%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-500 mb-1">Reading</div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-primary h-2 rounded-full" style="width: 68%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 border border-primary text-primary py-2 rounded-button font-medium hover:bg-primary/5 transition whitespace-nowrap">
+                            View All Test History
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-bold mb-4">Performance Analytics</h3>
+                        <div id="scoreChart" class="w-full h-64 mb-6"></div>
+                        <h4 class="font-medium text-gray-800 mb-3">Skill Breakdown</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm text-gray-700">Photographs</span>
+                                    <span class="text-sm font-medium">92%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm text-gray-700">Question-Response</span>
+                                    <span class="text-sm font-medium">78%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm text-gray-700">Conversations</span>
+                                    <span class="text-sm font-medium">65%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm text-gray-700">Incomplete Sentences</span>
+                                    <span class="text-sm font-medium">84%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 84%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm text-gray-700">Reading Comprehension</span>
+                                    <span class="text-sm font-medium">71%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 71%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Study Plan Tab Content -->
+        <div id="study-plan" class="tab-content">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h2 class="text-2xl font-bold mb-6">Your Personalized Study Plan</h2>
+                        
+                        <div class="mb-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold">Study Goals</h3>
+                                <button class="text-primary text-sm font-medium flex items-center whitespace-nowrap">
+                                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                        <i class="ri-edit-line"></i>
+                                    </div>
+                                    Edit Goals
+                                </button>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                                    <div class="flex items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                            <i class="ri-trophy-line"></i>
+                                        </div>
+                                        <h4 class="font-medium ml-2">Target Score</h4>
+                                    </div>
+                                    <div class="text-2xl font-bold text-gray-800">850+</div>
+                                    <p class="text-xs text-gray-500 mt-1">Current estimate: 705</p>
+                                </div>
+                                
+                                <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                                    <div class="flex items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                            <i class="ri-calendar-check-line"></i>
+                                        </div>
+                                        <h4 class="font-medium ml-2">Test Date</h4>
+                                    </div>
+                                    <div class="text-2xl font-bold text-gray-800">July 22</div>
+                                    <p class="text-xs text-gray-500 mt-1">42 days remaining</p>
+                                </div>
+                                
+                                <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                                    <div class="flex items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                                            <i class="ri-time-line"></i>
+                                        </div>
+                                        <h4 class="font-medium ml-2">Study Time</h4>
+                                    </div>
+                                    <div class="text-2xl font-bold text-gray-800">10 hrs/week</div>
+                                    <p class="text-xs text-gray-500 mt-1">2 hours per day, 5 days a week</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-primary/5 border border-primary/20 rounded-lg p-4">
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full text-primary mt-0.5">
+                                        <i class="ri-information-line"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h4 class="font-medium text-gray-800">Plan Recommendation</h4>
+                                        <p class="text-sm text-gray-600 mt-1">Based on your current performance and target score, we recommend focusing on Conversations and Reading Comprehension sections to maximize your improvement.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold">Weekly Schedule</h3>
+                                <div class="flex items-center space-x-2">
+                                    <button class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:border-primary hover:text-primary transition">
+                                        <i class="ri-arrow-left-s-line"></i>
+                                    </button>
+                                    <span class="text-sm font-medium">June 10 - June 16</span>
+                                    <button class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:border-primary hover:text-primary transition">
+                                        <i class="ri-arrow-right-s-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">Day</th>
+                                            <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">Focus Area</th>
+                                            <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">Activities</th>
+                                            <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">Duration</th>
+                                            <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="bg-green-50">
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Tuesday<br><span class="text-xs text-gray-500">Today</span></td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Listening: Conversations</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">
+                                                <div>• Conversation Practice (30 min)</div>
+                                                <div>• Strategy Review (15 min)</div>
+                                                <div>• Mini Test (15 min)</div>
+                                            </td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">1 hour</td>
+                                            <td class="px-4 py-3 text-sm border-b">
+                                                <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs">In Progress</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Wednesday</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Reading: Incomplete Sentences</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">
+                                                <div>• Grammar Review (30 min)</div>
+                                                <div>• Practice Exercises (30 min)</div>
+                                                <div>• Vocabulary Builder (30 min)</div>
+                                            </td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">1.5 hours</td>
+                                            <td class="px-4 py-3 text-sm border-b">
+                                                <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">Upcoming</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Thursday</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Listening: Talks</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">
+                                                <div>• Note-taking Practice (20 min)</div>
+                                                <div>• Talks Practice (40 min)</div>
+                                                <div>• Review Mistakes (30 min)</div>
+                                            </td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">1.5 hours</td>
+                                            <td class="px-4 py-3 text-sm border-b">
+                                                <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">Upcoming</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Friday</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Reading: Comprehension</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">
+                                                <div>• Skimming & Scanning Practice (20 min)</div>
+                                                <div>• Business Documents (40 min)</div>
+                                                <div>• Strategy Review (30 min)</div>
+                                            </td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">1.5 hours</td>
+                                            <td class="px-4 py-3 text-sm border-b">
+                                                <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">Upcoming</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Saturday</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Full Practice Test</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">
+                                                <div>• Mini TOEIC Test (1 hour)</div>
+                                                <div>• Review Results (30 min)</div>
+                                                <div>• Identify Weak Areas (30 min)</div>
+                                            </td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">2 hours</td>
+                                            <td class="px-4 py-3 text-sm border-b">
+                                                <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">Upcoming</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Sunday</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Rest Day</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">
+                                                <div>• Optional: Review Notes</div>
+                                                <div>• Prepare for Next Week</div>
+                                            </td>
+                                            <td class="px-4 py-3 text-sm text-gray-700 border-b">Flexible</td>
+                                            <td class="px-4 py-3 text-sm border-b">
+                                                <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">Upcoming</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 text-sm text-gray-700">Monday</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700">Vocabulary & Grammar</td>
+                                            <td class="px-4 py-3 text-sm text-gray-700">
+                                                <div>• Business Vocabulary (30 min)</div>
+                                                <div>• Grammar Exercises (30 min)</div>
+                                                <div>• Listening Practice (30 min)</div>
+                                            </td>
+                                            <td class="px-4 py-3 text-sm text-gray-700">1.5 hours</td>
+                                            <td class="px-4 py-3 text-sm">
+                                                <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">Upcoming</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold">Progress Tracking</h3>
+                                <div class="flex items-center">
+                                    <button class="px-3 py-1 text-sm border border-gray-300 rounded-full flex items-center text-gray-700 hover:border-primary hover:text-primary transition mr-2 whitespace-nowrap">
+                                        <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                            <i class="ri-calendar-line"></i>
+                                        </div>
+                                        This Month
+                                    </button>
+                                    <button class="px-3 py-1 text-sm border border-gray-300 rounded-full flex items-center text-gray-700 hover:border-primary hover:text-primary transition whitespace-nowrap">
+                                        <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                            <i class="ri-download-line"></i>
+                                        </div>
+                                        Export
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div id="progressChart" class="w-full h-64"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h3 class="text-lg font-bold mb-4">Study Plan Options</h3>
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition cursor-pointer">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium">Intensive Plan</h4>
+                                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Current</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-3">10 hours/week • 6 weeks</p>
+                                <ul class="text-sm text-gray-600 space-y-1 mb-3">
+                                    <li class="flex items-start">
+                                        <div class="w-4 h-4 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Comprehensive coverage of all sections</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-4 h-4 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Weekly full practice tests</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-4 h-4 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Personalized feedback on weak areas</span>
+                                    </li>
+                                </ul>
+                                <button class="w-full bg-primary/10 text-primary py-2 rounded-button font-medium hover:bg-primary/20 transition whitespace-nowrap">
+                                    Current Plan
+                                </button>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition cursor-pointer">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium">Standard Plan</h4>
+                                    <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Available</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-3">6 hours/week • 8 weeks</p>
+                                <ul class="text-sm text-gray-600 space-y-1 mb-3">
+                                    <li class="flex items-start">
+                                        <div class="w-4 h-4 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Balanced coverage of all sections</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-4 h-4 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Bi-weekly practice tests</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-4 h-4 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Regular progress assessments</span>
+                                    </li>
+                                </ul>
+                                <button class="w-full border border-primary text-primary py-2 rounded-button font-medium hover:bg-primary/5 transition whitespace-nowrap">
+                                    Switch to This Plan
+                                </button>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition cursor-pointer">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium">Flexible Plan</h4>
+                                    <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Available</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-3">4 hours/week • 12 weeks</p>
+                                <ul class="text-sm text-gray-600 space-y-1 mb-3">
+                                    <li class="flex items-start">
+                                        <div class="w-4 h-4 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Focus on your weakest areas</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-4 h-4 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Monthly practice tests</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="w-4 h-4 flex items-center justify-center text-primary mt-0.5">
+                                            <i class="ri-check-line"></i>
+                                        </div>
+                                        <span class="ml-2">Adjustable schedule</span>
+                                    </li>
+                                </ul>
+                                <button class="w-full border border-primary text-primary py-2 rounded-button font-medium hover:bg-primary/5 transition whitespace-nowrap">
+                                    Switch to This Plan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-bold mb-4">Study Tips</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0 mt-0.5">
+                                    <i class="ri-timer-line"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">Consistent Practice</h4>
+                                    <p class="text-sm text-gray-600 mt-1">Regular, shorter study sessions are more effective than cramming. Aim for daily practice, even if it's just 30 minutes.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0 mt-0.5">
+                                    <i class="ri-focus-3-line"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">Focus on Weaknesses</h4>
+                                    <p class="text-sm text-gray-600 mt-1">Identify your weakest areas through practice tests and dedicate more time to improving them.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0 mt-0.5">
+                                    <i class="ri-file-list-3-line"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">Review Mistakes</h4>
+                                    <p class="text-sm text-gray-600 mt-1">Don't just move on after a practice test. Carefully review each mistake to understand why you got it wrong.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0 mt-0.5">
+                                    <i class="ri-mental-health-line"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">Manage Test Anxiety</h4>
+                                    <p class="text-sm text-gray-600 mt-1">Practice under test-like conditions to build familiarity and reduce anxiety on test day.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources Tab Content -->
+        <div id="resources" class="tab-content">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h2 class="text-2xl font-bold mb-6">Study Materials</h2>
+                        
+                        <div class="mb-6">
+                            <div class="flex space-x-1 overflow-x-auto">
+                                <button class="px-1 py-1 text-sm bg-primary text-white rounded-full whitespace-nowrap">All Resources</button>
+                                <button class="px-1 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded-full whitespace-nowrap">Video Tutorials</button>
+                                <button class="px-1 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded-full whitespace-nowrap">Audio Lessons</button>
+                                <button class="px-1 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded-full whitespace-nowrap">PDF Guides</button>
+                                <button class="px-1 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded-full whitespace-nowrap">Vocabulary</button>
+                                <button class="px-1 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded-full whitespace-nowrap">Grammar</button>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">Video Tutorials</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="border border-gray-200 rounded-lg overflow-hidden hover:border-primary transition">
+                                        <div class="relative">
+                                            <img src="https://readdy.ai/api/search-image?query=A%20professional%20video%20tutorial%20thumbnail%20showing%20a%20teacher%20explaining%20TOEIC%20listening%20strategies%20with%20headphones%20and%20audio%20visualization%20graphics.%20The%20image%20has%20a%20clean%2C%20educational%20look%20with%20soft%20lighting%20and%20a%20professional%20setting.&width=400&height=225&seq=3&orientation=landscape" alt="TOEIC Listening Strategies" class="w-full h-48 object-cover">
+                                            <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+                                                <div class="w-12 h-12 flex items-center justify-center bg-primary rounded-full text-white">
+                                                    <i class="ri-play-fill text-xl"></i>
+                                                </div>
+                                            </div>
+                                            <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                                18:24
+                                            </div>
+                                        </div>
+                                        <div class="p-4">
+                                            <h4 class="font-medium mb-1">TOEIC Listening Strategies: Mastering Conversations</h4>
+                                            <p class="text-sm text-gray-600 mb-2">Learn effective techniques for understanding and answering conversation questions.</p>
+                                            <div class="flex items-center text-xs text-gray-500">
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-eye-line"></i>
+                                                </div>
+                                                <span class="ml-1">4,587 views</span>
+                                                <span class="mx-2">•</span>
+                                                <span>May 28, 2025</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="border border-gray-200 rounded-lg overflow-hidden hover:border-primary transition">
+                                        <div class="relative">
+                                            <img src="https://readdy.ai/api/search-image?query=A%20professional%20video%20tutorial%20thumbnail%20showing%20a%20teacher%20explaining%20TOEIC%20reading%20comprehension%20techniques%20with%20books%2C%20documents%2C%20and%20reading%20materials%20visible.%20The%20image%20has%20a%20clean%2C%20educational%20look%20with%20soft%20lighting%20and%20a%20professional%20setting.&width=400&height=225&seq=4&orientation=landscape" alt="TOEIC Reading Comprehension" class="w-full h-48 object-cover">
+                                            <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+                                                <div class="w-12 h-12 flex items-center justify-center bg-primary rounded-full text-white">
+                                                    <i class="ri-play-fill text-xl"></i>
+                                                </div>
+                                            </div>
+                                            <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                                22:15
+                                            </div>
+                                        </div>
+                                        <div class="p-4">
+                                            <h4 class="font-medium mb-1">TOEIC Reading Comprehension: Skimming & Scanning</h4>
+                                            <p class="text-sm text-gray-600 mb-2">Master the art of quickly finding information in business documents.</p>
+                                            <div class="flex items-center text-xs text-gray-500">
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-eye-line"></i>
+                                                </div>
+                                                <span class="ml-1">3,982 views</span>
+                                                <span class="mx-2">•</span>
+                                                <span>June 2, 2025</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 text-center">
+                                    <button class="text-primary text-sm font-medium hover:underline whitespace-nowrap">
+                                        View All Video Tutorials
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">PDF Study Guides</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition">
+                                        <div class="flex items-center mb-3">
+                                            <div class="w-10 h-10 flex items-center justify-center bg-red-100 text-red-700 rounded-lg">
+                                                <i class="ri-file-pdf-line text-xl"></i>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h4 class="font-medium text-sm">TOEIC Grammar Guide</h4>
+                                                <p class="text-xs text-gray-500">PDF • 45 pages</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mb-3">Comprehensive review of essential grammar points for the TOEIC test.</p>
+                                        <button class="w-full border border-primary text-primary py-1.5 rounded-button text-sm font-medium hover:bg-primary/5 transition whitespace-nowrap">
+                                            Download
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition">
+                                        <div class="flex items-center mb-3">
+                                            <div class="w-10 h-10 flex items-center justify-center bg-red-100 text-red-700 rounded-lg">
+                                                <i class="ri-file-pdf-line text-xl"></i>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h4 class="font-medium text-sm">Business Vocabulary List</h4>
+                                                <p class="text-xs text-gray-500">PDF • 32 pages</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mb-3">500+ essential business terms frequently tested on the TOEIC exam.</p>
+                                        <button class="w-full border border-primary text-primary py-1.5 rounded-button text-sm font-medium hover:bg-primary/5 transition whitespace-nowrap">
+                                            Download
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition">
+                                        <div class="flex items-center mb-3">
+                                            <div class="w-10 h-10 flex items-center justify-center bg-red-100 text-red-700 rounded-lg">
+                                                <i class="ri-file-pdf-line text-xl"></i>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h4 class="font-medium text-sm">Test-Taking Strategies</h4>
+                                                <p class="text-xs text-gray-500">PDF • 28 pages</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mb-3">Expert tips and strategies to maximize your TOEIC score.</p>
+                                        <button class="w-full border border-primary text-primary py-1.5 rounded-button text-sm font-medium hover:bg-primary/5 transition whitespace-nowrap">
+                                            Download
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mt-4 text-center">
+                                    <button class="text-primary text-sm font-medium hover:underline whitespace-nowrap">
+                                        View All PDF Guides
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">Audio Lessons</h3>
+                                <div class="space-y-3">
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-lg text-primary">
+                                                    <i class="ri-headphone-line text-xl"></i>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h4 class="font-medium">Business Meeting Vocabulary</h4>
+                                                    <p class="text-xs text-gray-500">Audio • 12:45</p>
+                                                </div>
+                                            </div>
+                                            <button class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full">
+                                                <i class="ri-play-fill"></i>
+                                            </button>
+                                        </div>
+                                        <div class="audio-player">
+                                            <div class="progress-bar">
+                                                <div class="progress"></div>
+                                                <div class="progress-handle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-lg text-primary">
+                                                    <i class="ri-headphone-line text-xl"></i>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h4 class="font-medium">Telephone Conversations</h4>
+                                                    <p class="text-xs text-gray-500">Audio • 15:20</p>
+                                                </div>
+                                            </div>
+                                            <button class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full">
+                                                <i class="ri-play-fill"></i>
+                                            </button>
+                                        </div>
+                                        <div class="audio-player">
+                                            <div class="progress-bar">
+                                                <div class="progress"></div>
+                                                <div class="progress-handle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-lg text-primary">
+                                                    <i class="ri-headphone-line text-xl"></i>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h4 class="font-medium">Announcements & Broadcasts</h4>
+                                                    <p class="text-xs text-gray-500">Audio • 10:35</p>
+                                                </div>
+                                            </div>
+                                            <button class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full">
+                                                <i class="ri-play-fill"></i>
+                                            </button>
+                                        </div>
+                                        <div class="audio-player">
+                                            <div class="progress-bar">
+                                                <div class="progress"></div>
+                                                <div class="progress-handle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 text-center">
+                                    <button class="text-primary text-sm font-medium hover:underline whitespace-nowrap">
+                                        View All Audio Lessons
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h3 class="text-lg font-bold mb-4">Recommended Books</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <img src="https://readdy.ai/api/search-image?query=A%20professional%20TOEIC%20preparation%20book%20cover%20with%20clean%2C%20modern%20design%20featuring%20business%20imagery%20and%20TOEIC%20branding.%20The%20book%20appears%20to%20be%20an%20official%20preparation%20guide%20with%20professional%20layout%20and%20educational%20design.&width=80&height=120&seq=5&orientation=portrait" alt="Official TOEIC Preparation Guide" class="w-16 h-24 object-cover rounded-sm">
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">Official TOEIC Preparation Guide</h4>
+                                    <p class="text-xs text-gray-600 mt-1">ETS • 2025 Edition</p>
+                                    <div class="flex items-center text-yellow-500 text-xs mt-1">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                        <span class="text-gray-600 ml-1">4.5</span>
+                                    </div>
+                                    <a href="#" class="text-xs text-primary font-medium mt-1 inline-block">View Details</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <img src="https://readdy.ai/api/search-image?query=A%20professional%20TOEIC%20vocabulary%20book%20cover%20with%20clean%2C%20modern%20design%20featuring%20business%20imagery%20and%20educational%20branding.%20The%20book%20appears%20to%20be%20a%20specialized%20vocabulary%20guide%20with%20professional%20layout%20and%20educational%20design.&width=80&height=120&seq=6&orientation=portrait" alt="TOEIC Vocabulary Master" class="w-16 h-24 object-cover rounded-sm">
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">TOEIC Vocabulary Master</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Cambridge Press • 2024</p>
+                                    <div class="flex items-center text-yellow-500 text-xs mt-1">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-line"></i>
+                                        <span class="text-gray-600 ml-1">4.0</span>
+                                    </div>
+                                    <a href="#" class="text-xs text-primary font-medium mt-1 inline-block">View Details</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <img src="https://readdy.ai/api/search-image?query=A%20professional%20TOEIC%20practice%20test%20book%20cover%20with%20clean%2C%20modern%20design%20featuring%20business%20imagery%20and%20educational%20branding.%20The%20book%20appears%20to%20be%20a%20collection%20of%20practice%20tests%20with%20professional%20layout%20and%20educational%20design.&width=80&height=120&seq=7&orientation=portrait" alt="TOEIC Practice Tests" class="w-16 h-24 object-cover rounded-sm">
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">TOEIC Practice Tests</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Oxford • 2025</p>
+                                    <div class="flex items-center text-yellow-500 text-xs mt-1">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <span class="text-gray-600 ml-1">4.8</span>
+                                    </div>
+                                    <a href="#" class="text-xs text-primary font-medium mt-1 inline-block">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 border border-primary text-primary py-2 rounded-button font-medium hover:bg-primary/5 transition whitespace-nowrap">
+                            View All Recommended Books
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h3 class="text-lg font-bold mb-4">Mobile Apps</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0">
+                                    <i class="ri-smartphone-line text-xl"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">TOEIC Prep App</h4>
+                                    <p class="text-sm text-gray-600">Practice on the go with our mobile app</p>
+                                    <div class="flex mt-2 space-x-2">
+                                        <button class="flex items-center justify-center px-3 py-1 bg-gray-900 text-white rounded text-xs whitespace-nowrap">
+                                            <div class="w-3 h-3 flex items-center justify-center mr-1">
+                                                <i class="ri-apple-fill"></i>
+                                            </div>
+                                            iOS
+                                        </button>
+                                        <button class="flex items-center justify-center px-3 py-1 bg-green-600 text-white rounded text-xs whitespace-nowrap">
+                                            <div class="w-3 h-3 flex items-center justify-center mr-1">
+                                                <i class="ri-android-fill"></i>
+                                            </div>
+                                            Android
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg text-primary flex-shrink-0">
+                                    <i class="ri-translate-2"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-900">Business English Vocabulary</h4>
+                                    <p class="text-sm text-gray-600">Flashcards and quizzes for TOEIC vocabulary</p>
+                                    <div class="flex mt-2 space-x-2">
+                                        <button class="flex items-center justify-center px-3 py-1 bg-gray-900 text-white rounded text-xs whitespace-nowrap">
+                                            <div class="w-3 h-3 flex items-center justify-center mr-1">
+                                                <i class="ri-apple-fill"></i>
+                                            </div>
+                                            iOS
+                                        </button>
+                                        <button class="flex items-center justify-center px-3 py-1 bg-green-600 text-white rounded text-xs whitespace-nowrap">
+                                            <div class="w-3 h-3 flex items-center justify-center mr-1">
+                                                <i class="ri-android-fill"></i>
+                                            </div>
+                                            Android
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-bold mb-4">FAQ</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <button class="flex justify-between items-center w-full text-left font-medium text-gray-800 hover:text-primary transition">
+                                    <span>How often is the TOEIC test offered?</span>
+                                    <div class="w-5 h-5 flex items-center justify-center">
+                                        <i class="ri-add-line"></i>
+                                    </div>
+                                </button>
+                                <div class="mt-2 text-sm text-gray-600">
+                                    The TOEIC test is typically offered monthly in most test centers, but frequency may vary by location. Check the official ETS website for specific dates in your area.
+                                </div>
+                            </div>
+                            
+                            <div class="border-t pt-4">
+                                <button class="flex justify-between items-center w-full text-left font-medium text-gray-800 hover:text-primary transition">
+                                    <span>How long are TOEIC scores valid?</span>
+                                    <div class="w-5 h-5 flex items-center justify-center">
+                                        <i class="ri-add-line"></i>
+                                    </div>
+                                </button>
+                                <div class="mt-2 text-sm text-gray-600">
+                                    TOEIC scores are valid for two years from the test date. After that, you may need to retake the test if a current score is required.
+                                </div>
+                            </div>
+                            
+                            <div class="border-t pt-4">
+                                <button class="flex justify-between items-center w-full text-left font-medium text-gray-800 hover:text-primary transition">
+                                    <span>What's a good TOEIC score?</span>
+                                    <div class="w-5 h-5 flex items-center justify-center">
+                                        <i class="ri-add-line"></i>
+                                    </div>
+                                </button>
+                                <div class="mt-2 text-sm text-gray-600">
+                                    A "good" score depends on your goals. Generally, 700+ is considered strong for most business positions, 850+ is excellent, and 900+ is exceptional. Check with your employer or institution for specific requirements.
+                                </div>
+                            </div>
+                            
+                            <div class="border-t pt-4">
+                                <button class="flex justify-between items-center w-full text-left font-medium text-gray-800 hover:text-primary transition">
+                                    <span>Can I use a dictionary during the test?</span>
+                                    <div class="w-5 h-5 flex items-center justify-center">
+                                        <i class="ri-add-line"></i>
+                                    </div>
+                                </button>
+                                <div class="mt-2 text-sm text-gray-600">
+                                    No, dictionaries, translators, or any reference materials are not allowed during the TOEIC test. Only approved writing instruments are permitted.
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 border border-primary text-primary py-2 rounded-button font-medium hover:bg-primary/5 transition whitespace-nowrap">
+                            View All FAQs
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-['Pacifico'] mb-4">logo</h3>
+                    <p class="text-gray-400 text-sm mb-4">Comprehensive preparation resources for the TOEIC Listening & Reading Test. Improve your score with our expert-designed materials.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full text-gray-400 hover:bg-primary hover:text-white transition">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full text-gray-400 hover:bg-primary hover:text-white transition">
+                            <i class="ri-twitter-x-fill"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full text-gray-400 hover:bg-primary hover:text-white transition">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full text-gray-400 hover:bg-primary hover:text-white transition">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Courses</a></li>
+                        <li><a href="#" class="hover:text-white transition">Practice Tests</a></li>
+                        <li><a href="#" class="hover:text-white transition">Resources</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Exam Types</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="https://readdy.ai/home/d9ada839-e5ea-4775-aff2-3dd15d71dc5e/b027fe75-bfaa-40e3-a8bb-ffba32657a34" data-readdy="true" class="hover:text-white transition">TOEIC</a></li>
+                        <li><a href="#" class="hover:text-white transition">TOEFL</a></li>
+                        <li><a href="#" class="hover:text-white transition">IELTS</a></li>
+                        <li><a href="#" class="hover:text-white transition">Cambridge English</a></li>
+                        <li><a href="#" class="hover:text-white transition">Business English</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-500 mt-0.5">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span class="ml-2">123 Education St, New York, NY 10001</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-500 mt-0.5">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span class="ml-2">info@toeicprep.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-500 mt-0.5">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span class="ml-2">+1 (555) 123-4567</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-6">
+                        <h4 class="text-sm font-semibold mb-2">Subscribe to our newsletter</h4>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" class="bg-gray-800 border-none text-sm text-white px-4 py-2 rounded-l-button focus:outline-none focus:ring-2 focus:ring-primary">
+                            <button class="bg-primary text-white px-4 py-2 rounded-r-button text-sm font-medium hover:bg-primary/90 transition whitespace-nowrap">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 TOEIC Prep. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 text-sm hover:text-white transition">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 text-sm hover:text-white transition">Terms of Service</a>
+                        <a href="#" class="text-gray-400 text-sm hover:text-white transition">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    
+    <script id="tab-switcher">
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active', 'text-primary', 'border-primary'));
+                    tabButtons.forEach(btn => btn.classList.add('text-gray-500', 'hover:text-gray-700'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    button.classList.add('active', 'text-primary', 'border-primary');
+                    button.classList.remove('text-gray-500', 'hover:text-gray-700');
+                    
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+    
+    <script id="charts-init">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Score Chart
+            if (document.getElementById('scoreChart')) {
+                const scoreChart = echarts.init(document.getElementById('scoreChart'));
+                const scoreOption = {
+                    animation: false,
+                    tooltip: {
+                        trigger: 'axis',
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        borderColor: '#e5e7eb',
+                        textStyle: {
+                            color: '#1f2937'
+                        }
+                    },
+                    grid: {
+                        top: 10,
+                        right: 10,
+                        bottom: 30,
+                        left: 50
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        axisLine: {
+                            lineStyle: {
+                                color: '#e5e7eb'
+                            }
+                        },
+                        axisLabel: {
+                            color: '#1f2937'
+                        }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        min: 400,
+                        max: 900,
+                        axisLine: {
+                            lineStyle: {
+                                color: '#e5e7eb'
+                            }
+                        },
+                        axisLabel: {
+                            color: '#1f2937'
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: '#f3f4f6'
+                            }
+                        }
+                    },
+                    series: [
+                        {
+                            name: 'Listening Score',
+                            type: 'line',
+                            smooth: true,
+                            data: [520, 550, 590, 620, 650, 680],
+                            symbol: 'none',
+                            lineStyle: {
+                                width: 3,
+                                color: 'rgba(87, 181, 231, 1)'
+                            },
+                            areaStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+                                    }, {
+                                        offset: 1, color: 'rgba(87, 181, 231, 0)'
+                                    }]
+                                }
+                            }
+                        },
+                        {
+                            name: 'Reading Score',
+                            type: 'line',
+                            smooth: true,
+                            data: [480, 510, 540, 580, 610, 650],
+                            symbol: 'none',
+                            lineStyle: {
+                                width: 3,
+                                color: 'rgba(141, 211, 199, 1)'
+                            },
+                            areaStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: 'rgba(141, 211, 199, 0.2)'
+                                    }, {
+                                        offset: 1, color: 'rgba(141, 211, 199, 0)'
+                                    }]
+                                }
+                            }
+                        },
+                        {
+                            name: 'Total Score',
+                            type: 'line',
+                            smooth: true,
+                            data: [600, 630, 680, 700, 730, 780],
+                            symbol: 'none',
+                            lineStyle: {
+                                width: 3,
+                                color: 'rgba(251, 191, 114, 1)'
+                            },
+                            areaStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: 'rgba(251, 191, 114, 0.2)'
+                                    }, {
+                                        offset: 1, color: 'rgba(251, 191, 114, 0)'
+                                    }]
+                                }
+                            }
+                        }
+                    ]
+                };
+                scoreChart.setOption(scoreOption);
+                
+                window.addEventListener('resize', function() {
+                    scoreChart.resize();
+                });
+            }
+            
+            // Progress Chart
+            if (document.getElementById('progressChart')) {
+                const progressChart = echarts.init(document.getElementById('progressChart'));
+                const progressOption = {
+                    animation: false,
+                    tooltip: {
+                        trigger: 'axis',
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        borderColor: '#e5e7eb',
+                        textStyle: {
+                            color: '#1f2937'
+                        }
+                    },
+                    grid: {
+                        top: 10,
+                        right: 10,
+                        bottom: 30,
+                        left: 50
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+                        axisLine: {
+                            lineStyle: {
+                                color: '#e5e7eb'
+                            }
+                        },
+                        axisLabel: {
+                            color: '#1f2937'
+                        }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        min: 0,
+                        max: 100,
+                        axisLine: {
+                            lineStyle: {
+                                color: '#e5e7eb'
+                            }
+                        },
+                        axisLabel: {
+                            color: '#1f2937',
+                            formatter: '{value}%'
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: '#f3f4f6'
+                            }
+                        }
+                    },
+                    series: [
+                        {
+                            name: 'Completion Rate',
+                            type: 'bar',
+                            data: [15, 28, 42, 58, 72, 85],
+                            itemStyle: {
+                                color: 'rgba(87, 181, 231, 1)',
+                                borderRadius: [4, 4, 0, 0]
+                            }
+                        },
+                        {
+                            name: 'Target',
+                            type: 'line',
+                            smooth: true,
+                            data: [16, 32, 48, 64, 80, 96],
+                            symbol: 'none',
+                            lineStyle: {
+                                width: 2,
+                                type: 'dashed',
+                                color: 'rgba(252, 141, 98, 1)'
+                            }
+                        }
+                    ]
+                };
+                progressChart.setOption(progressOption);
+                
+                window.addEventListener('resize', function() {
+                    progressChart.resize();
+                });
+            }
+        });
+    </script>
+    
+    <script id="form-controls">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom radio buttons
+            const radioInputs = document.querySelectorAll('input[type="radio"]');
+            radioInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    // Uncheck all radios in the same group
+                    const name = this.getAttribute('name');
+                    document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+                        const customRadio = radio.nextElementSibling;
+                        if (customRadio && customRadio.classList.contains('custom-radio')) {
+                            customRadio.classList.remove('border-primary');
+                            customRadio.innerHTML = '';
+                        }
+                    });
+                    
+                    // Check the selected radio
+                    if (this.checked) {
+                        const customRadio = this.nextElementSibling;
+                        if (customRadio && customRadio.classList.contains('custom-radio')) {
+                            customRadio.classList.add('border-primary');
+                        }
+                    }
+                });
+            });
+            
+            // Custom checkboxes
+            const checkboxInputs = document.querySelectorAll('input[type="checkbox"]');
+            checkboxInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    const customCheckbox = this.nextElementSibling;
+                    if (customCheckbox && customCheckbox.classList.contains('custom-checkbox')) {
+                        if (this.checked) {
+                            customCheckbox.classList.add('bg-primary', 'border-primary');
+                        } else {
+                            customCheckbox.classList.remove('bg-primary', 'border-primary');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
